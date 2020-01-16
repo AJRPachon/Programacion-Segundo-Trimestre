@@ -11,8 +11,8 @@
 
     PROPIEDADES DERIVADAS
 
-        perimetro   void consultable
-        area        void consultable
+        perimetro   consultable
+        area        consultable
 
     PROPIEDADES COMPARTIDAS
 
@@ -93,7 +93,7 @@ public class Rectangulo {
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-    //Modificable
+    //Si fuese modificable se haría de esta manera
     //Como es un procedimiento, int ladoMenor es el valor por parámetros que le pasamos desde el main
     //para cambiar el valor de this.ladoMenor
 
@@ -114,12 +114,24 @@ public class Rectangulo {
     /*
     PROPIEDADES DERIVADAS
 
-    perimetro   void consultable
-    area        void consultable
+    perimetro   consultable
+    area        consultable
     */
 
+    //Si es un método derivado, no hay que guardarlo en el objeto porque se calcularía cada vez que se llame
+    //No hace falta declararlo como atributo de la clase
 
 
+    public double getPerimetro(){
 
+        return 2*(this.ladoMayor + this.ladoMenor);
+
+    }
+
+    public double getArea(){
+
+        return this.ladoMayor * this.ladoMenor;
+
+    }
 
 }
