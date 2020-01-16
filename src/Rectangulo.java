@@ -35,7 +35,6 @@
 */
 
 
-import java.util.Scanner;
 
 public class Rectangulo {
 
@@ -49,8 +48,8 @@ public class Rectangulo {
 
     public Rectangulo(){ //Constuctor
 
-        this.ladoMenor= 0; //Cuando pongo this se está refiriendo a los atributos de la clase
-        this.ladoMayor=0;  //Porque puede tener el mismo nombre que los atributos que les pase por parámetros
+        this.ladoMenor = 0; //Cuando pongo this se está refiriendo a los atributos de la clase
+        this.ladoMayor = 0;  //Porque puede tener el mismo nombre que los atributos que les pase por parámetros
 
     }
 
@@ -110,6 +109,7 @@ public class Rectangulo {
 
     }
 
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     /*
     PROPIEDADES DERIVADAS
