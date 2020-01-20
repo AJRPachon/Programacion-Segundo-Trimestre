@@ -64,6 +64,7 @@ public class Rectangulo {
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+    //Constructor de copia
     //Como es un objeto distinto, tengo que obtener las propiedades del objeto de la clase
     //Tengo que hacerlo a través del método
 
