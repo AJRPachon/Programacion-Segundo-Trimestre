@@ -58,6 +58,7 @@ package Personas;
 */
 
 import java.math.*;
+import java.util.Scanner;
 
 public class Persona {
 
@@ -129,4 +130,84 @@ private int edad;
         return this.nombre;
     }
 
+
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+/*
+ * SIGNATURA:
+ *      public static double calculaImc(double imc);
+ *
+ * COMENTARIO:
+ *     El subprograma nos devuelve 1,0 o -1 dependiendo del imc que nos de
+ *
+ *
+ * PRECONDICION:
+ *      Ninguna
+ *
+ * ENTRADA:
+ *      peso y altura
+ *
+ * SALIDA:
+ *      NumeroImc
+ *
+ * ENTRADA/SALIDA:
+ *      Ninguna
+ *
+ * POSTCONDICIONES:
+ *      El metodo calculaImc devuelve un valor asociado al nombre
+ *
+ *
+ *  Por debajo de 18.5    Bajo peso
+ *  18.5 – 24.9    Normal
+ *  25.0 – 29.9    Sobrepeso
+ *  30.0 o más    Obeso
+ *
+ *
+ */
+
+
+    public static double calculaImc(double imc) {
+
+        double numeroImc = 0;
+
+        if( imc < 18.5 ){
+
+            numeroImc = -1;
+
+        }else{
+
+            if( imc >= 18.5 && imc <= 24.9 ){
+
+                numeroImc = 0;
+
+            }else{
+
+                numeroImc = 1;
+
+            }
+        }
+
+        return numeroImc;
+    }
+
+
+
+    public static void validarGenero(char genero){
+
+        Scanner teclado = new Scanner(System.in);
+
+        while( genero != 'M' || genero != 'H' || genero != 'O'){
+
+            System.out.println("*while* Introduzca genero \n[M]Mujer \n[H]Hombre \n[O]Otro");
+            genero = teclado.next().charAt(0);
+            genero = Character.toUpperCase(genero);
+
+        }
+
+    }
+
+
 }
+
+

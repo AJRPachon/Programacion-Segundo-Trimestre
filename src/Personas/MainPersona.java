@@ -35,35 +35,51 @@ package Personas;
 */
 
 import java.util.Scanner;
+import java.util.GregorianCalendar;
 
 public class MainPersona {
     public static void main(String[] args) {
 
         Scanner teclado = new Scanner(System.in);
 
-        double peso,altura, imc;
+        double peso,altura, imc, numeroImc;
         String nombre, dni;
         char genero;
-        int edad;
+        int edad, anio;
 
 
         //LeerYValidarPeso
+        System.out.println("Introduzca peso");
         peso = teclado.nextDouble();
 
         //LeerYValidarAltura
+        System.out.println("Introduzca altura");
         altura = teclado.nextDouble();
 
         //LeerYValidarFechaDeNacimiento (realizar subprograma con las validaciones que ya cree)
 
 
         //LeerYValidarNombre
+        System.out.println("Introduzca nombre");
         nombre = teclado.next();
 
         //LeerYValidarDni
+        System.out.println("Introduzca dni");
         dni = teclado.next();
 
         //LeerYValidarGenero
+        System.out.println("Introduzca genero \n[M]Mujer \n[H]Hombre \n[O]Otro");
         genero = teclado.next().charAt(0);
+        genero = Character.toUpperCase(genero);
+
+        while( genero != 'M' || genero != 'H' || genero != 'O'){
+
+            System.out.println("*while* Introduzca genero \n[M]Mujer \n[H]Hombre \n[O]Otro");
+            genero = teclado.next().charAt(0);
+            genero = Character.toUpperCase(genero);
+
+        }
+
 
         Persona ObjPersona = new Persona(); //Una vez que tengo todos los datos para construir el objeto, lo creo.
                                             //Persona sería la clase a la que hago referencia
@@ -73,9 +89,7 @@ public class MainPersona {
         imc = ObjPersona.getImc();
 
         //Calcular datos sobre el peso // Crear un metodo para ello
-        //18.5 – 24.9        //Normal
-        //25.0 – 29.9        //Sobrepeso
-        //30.0 o más        //Obeso
+        numeroImc = Persona.calculaImc(imc);
 
 
         //CalcularEdad
