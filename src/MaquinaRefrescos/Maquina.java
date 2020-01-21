@@ -49,6 +49,9 @@ public class Maquina {
     }
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+    //Una vez que tengo los constuctores tengo que crear las funciones
+    //this = Para referirse a las propiedades mismas de la clase
+
     public double getDineroTotal() { //
 
         return this.dineroTotal;
