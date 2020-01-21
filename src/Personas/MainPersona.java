@@ -25,6 +25,7 @@ package Personas;
         LeerYValidarGenero
 
         CalcularImc (llamada al método getImc)
+        Calcular datos sobre el peso
         CalcularEdad
 
         MostrarDatos (imc, peso 1,0,-1, datos personales(edad tambien))
@@ -70,6 +71,12 @@ public class MainPersona {
 
         //CalcularImc (llamada al método getImc)
         imc = ObjPersona.getImc();
+
+        //Calcular datos sobre el peso // Crear un metodo para ello
+        //18.5 – 24.9        //Normal
+        //25.0 – 29.9        //Sobrepeso
+        //30.0 o más        //Obeso
+
 
         //CalcularEdad
 
