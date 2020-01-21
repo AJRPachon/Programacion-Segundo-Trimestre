@@ -59,14 +59,14 @@ package Personas;
 
 import java.math.*;
 
-public class Personas {
+public class Persona {
 
 private double peso,altura, imc;
 private String nombre, dni;
 private char genero;
 private int edad;
 
-    public Personas(){ //Constructor
+    public Persona(){ //Constructor
 
         this.altura = 0;
         this.peso = 0;
@@ -78,7 +78,7 @@ private int edad;
 
     }
 
-    public Personas(double peso, double altura, double imc, String nombre, String dni, char genero, int edad) { //Constructor con parametros
+    public Persona(double peso, double altura, double imc, String nombre, String dni, char genero, int edad) { //Constructor con parametros
 
         this.altura = altura;
         this.peso = peso;
