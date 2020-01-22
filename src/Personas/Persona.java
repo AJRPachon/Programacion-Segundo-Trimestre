@@ -26,6 +26,7 @@ package Personas;
         genero Char consultable
         peso double consultable y modificable
         altura double consultable y modificable
+        fechaNac GregorianCalendar counsultable
 
 
     PROPIEDADES DERIVADAS
@@ -57,37 +58,40 @@ package Personas;
 
 */
 
+import sun.util.calendar.Gregorian;
+
 import java.math.*;
+import java.util.GregorianCalendar;
 import java.util.Scanner;
 
 public class Persona {
 
-private double peso,altura, imc;
+private double peso,altura;
 private String nombre, dni;
 private char genero;
-private int edad;
+private GregorianCalendar fechaNac;
+
+
 
     public Persona(){ //Constructor
 
         this.altura = 0;
         this.peso = 0;
-        this.edad = 0;
-        this.imc = 0;
         this.genero = ' ';
         this.nombre = " ";
         this.dni = " ";
+        this.fechaNac = new GregorianCalendar();
 
     }
 
-    public Persona(double peso, double altura, double imc, String nombre, String dni, char genero, int edad) { //Constructor con parametros
+    public Persona(double peso, double altura, String nombre, String dni, char genero, GregorianCalendar fechaNac) { //Constructor con parametros
 
         this.altura = altura;
         this.peso = peso;
-        this.edad = edad;
-        this.imc = imc;
         this.genero = genero;
         this.nombre = nombre;
         this.dni = dni;
+        this.fechaNac = fechaNac;
 
     }
 
@@ -110,9 +114,11 @@ private int edad;
         this.peso = peso;
     }
 
+    /*
     public int getEdad() {
         return this.edad;
     }
+*/
 
     public double getImc() {
         return peso/(Math.pow(altura,2));
@@ -167,17 +173,17 @@ private int edad;
  */
 
 
-    public static double calculaImc(double imc) {
+    public double calculaImc() {
 
         double numeroImc = 0;
 
-        if( imc < 18.5 ){
+        if( this.getImc() < 18.5 ){
 
             numeroImc = -1;
 
         }else{
 
-            if( imc >= 18.5 && imc <= 24.9 ){
+            if( this.getImc() >= 18.5 && this.getImc() <= 24.9 ){
 
                 numeroImc = 0;
 
@@ -191,21 +197,6 @@ private int edad;
         return numeroImc;
     }
 
-
-
-    public static void validarGenero(char genero){
-
-        Scanner teclado = new Scanner(System.in);
-
-        while( genero != 'M' || genero != 'H' || genero != 'O'){
-
-            System.out.println("*while* Introduzca genero \n[M]Mujer \n[H]Hombre \n[O]Otro");
-            genero = teclado.next().charAt(0);
-            genero = Character.toUpperCase(genero);
-
-        }
-
-    }
 
 
 }

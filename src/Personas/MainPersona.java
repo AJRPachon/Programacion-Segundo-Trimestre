@@ -42,10 +42,11 @@ public class MainPersona {
 
         Scanner teclado = new Scanner(System.in);
 
-        double peso,altura, imc, numeroImc;
+        double peso,altura, imc=0, numeroImc;
         String nombre, dni;
         char genero;
         int edad, anio;
+        GregorianCalendar fechaNac;
 
 
         //LeerYValidarPeso
@@ -89,7 +90,7 @@ public class MainPersona {
         imc = ObjPersona.getImc();
 
         //Calcular datos sobre el peso // Crear un metodo para ello
-        numeroImc = Persona.calculaImc(imc);
+        numeroImc = ObjPersona.calculaImc();
 
 
         //CalcularEdad
