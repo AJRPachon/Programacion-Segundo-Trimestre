@@ -84,7 +84,7 @@ private GregorianCalendar fechaNac;
 
     }
 
-    public Persona(double peso, double altura, String nombre, String dni, char genero, GregorianCalendar fechaNac) { //Constructor con parametros
+    public Persona(double peso, double altura, String nombre, String dni, char genero) { //Constructor con parametros
 
         this.altura = altura;
         this.peso = peso;

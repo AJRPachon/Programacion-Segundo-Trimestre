@@ -82,9 +82,10 @@ public class MainPersona {
         }
 
 
-        Persona ObjPersona = new Persona(); //Una vez que tengo todos los datos para construir el objeto, lo creo.
+        Persona ObjPersona = new Persona(peso, altura, nombre, dni, genero); //Una vez que tengo todos los datos para construir el objeto, lo creo.
                                             //Persona sería la clase a la que hago referencia
                                             //ObjPersona es el nombre que le he dado a mi objeto
+                                            //Faltan los parametros
 
         //CalcularImc (llamada al método getImc)
         imc = ObjPersona.getImc();

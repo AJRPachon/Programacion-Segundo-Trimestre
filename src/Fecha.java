@@ -187,6 +187,8 @@ public class Fecha {
             case 4: case 6: case 9: case 11:
                 if (dia < 1 || dia > 30) {
 
+                    fechaValida = true;
+
                 }
 
                 break;
@@ -210,11 +212,30 @@ public class Fecha {
                 break;
         }
 
+        return fechaValida;
+
     }
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+    //diferencia entre fechas
+   /*
+        fechaPrimera  año/mes/dia
+        fechaSegunda  año/mes/dia
 
+
+
+
+
+
+
+
+
+
+    */
+
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 }
 
 
