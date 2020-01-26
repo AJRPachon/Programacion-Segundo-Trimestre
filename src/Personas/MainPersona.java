@@ -99,5 +99,6 @@ public class MainPersona {
         //MostrarDatos (imc, peso 1,0,-1, datos personales(edad tambien))
 
 
+        
     }
 }
