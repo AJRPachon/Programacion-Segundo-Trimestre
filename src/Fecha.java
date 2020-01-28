@@ -175,7 +175,7 @@ public class Fecha {
         switch (this.mes) {
             //Para cuando el dia acaba en 31
             case 1: case 3: case 5: case 7: case 8: case 10: case 12:
-                if (this.dia >= 1 || this.dia <= 31) {
+                if (this.dia >= 1 && this.dia <= 31) {
 
                     fechaValida = true;
 
@@ -185,7 +185,7 @@ public class Fecha {
 
             //Para cuando el dia acaba en 30
             case 4: case 6: case 9: case 11:
-                if (dia < 1 || dia > 30) {
+                if (this.dia < 1 || this.dia > 30) {
 
                     fechaValida = true;
 
@@ -197,18 +197,20 @@ public class Fecha {
             case 2:
                 if (bisiestoFecha()) {
                     //Validar dia
-                    if (this.dia >= 1 || this.dia <= 29) {
+                    if (this.dia >= 1 && this.dia <= 29) {
 
                         fechaValida = true;
 
-                    } else {
-                        if (this.dia >= 1 || dia <= 28) {
+                    }
 
-                            fechaValida = true;
+                }else{
+                    if ( this.dia >= 1 && this.dia <= 28  ) {
 
-                        }
+                        fechaValida = true;
+
                     }
                 }
+
                 break;
         }
 
@@ -222,10 +224,6 @@ public class Fecha {
    /*
         fechaPrimera  año/mes/dia
         fechaSegunda  año/mes/dia
-
-
-
-
 
 
 

@@ -73,7 +73,7 @@ public class MainPersona {
         genero = teclado.next().charAt(0);
         genero = Character.toUpperCase(genero);
 
-        while( genero != 'M' || genero != 'H' || genero != 'O'){
+        while( genero != 'M' && genero != 'H' && genero != 'O'){
 
             System.out.println("*while* Introduzca genero \n[M]Mujer \n[H]Hombre \n[O]Otro");
             genero = teclado.next().charAt(0);
