@@ -98,24 +98,51 @@ public class Ordenador {
 //////////////////////////////////////////// MEMORIA/////////////////////////////////////////////////////////////////////////
 
     public int getTamanioMemoria(){
-
-        return this.memoria.getTamanio();  //Tengo que poner el nombre del objeto
-                                           //Porque es el atributo de la clase
+                                           //Tengo que poner el nombre del objeto
+        return this.memoria.getTamanio();  //Porque es el atributo de la clase
                                            //Dentro de la clase tengo un atributo llamado memoria (this.memoria)
+    }
+
+    public int getVelocidadMemoria(){
+
+        return this.memoria.getVelocidad();
+
+    }
+
+    public String getTipoMemoria(){
+
+        return this.memoria.getTipo();
+
     }
 
 
 /////////////////////////////////////////////// DISCO DURO //////////////////////////////////////////////////////////////////
 
-    public DiscoDuro getDiscoDuro() {
-        return discoDuro;
+    public int getTamanioDiscoDuro(){
+
+        return this.discoDuro.getTamanio();
+
+    }
+
+    public String getTipoDiscoDuro(){
+
+        return this.discoDuro.getTipo();
+
     }
 
 
 ////////////////////////////////////////////// PROCESADOR ///////////////////////////////////////////////////////////////////
 
-    public Procesador getProcesador() {
-        return procesador;
+    public String getModeloProcesador(){
+
+        return this.procesador.getModelo();
+
+    }
+
+    public int getVelocidadProcesador(){
+
+        return this.procesador.getVelocidad();
+
     }
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

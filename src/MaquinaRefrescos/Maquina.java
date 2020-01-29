@@ -35,18 +35,22 @@ package MaquinaRefrescos;
 public class Maquina {
 
     private double dineroTotal;
+    private Refrescos refrescos;
 
     public Maquina(){  //Constructor
 
         this.dineroTotal=0;
+        this.refrescos = new Refrescos();
 
     }
 
-    public Maquina(double dineroTotal){ //Constructor con parametros
+    public Maquina(double dineroTotal, Refrescos refrescos){ //Constructor con parametros
 
         this.dineroTotal = dineroTotal;
+        this.refrescos = new Refrescos();
 
     }
+
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     //Una vez que tengo los constuctores tengo que crear las funciones
@@ -55,6 +59,24 @@ public class Maquina {
     public double getDineroTotal() { //
 
         return this.dineroTotal;
+
+    }
+
+    public int getCantidadRefrescos(){
+
+        return this.refrescos.getCantidad();
+
+    }
+
+    public String getSaborRefrescos(){
+
+        return this.refrescos.getSabor();
+
+    }
+
+    public double getValorRefrescos(){
+
+        return this.refrescos.getValor();
 
     }
 
