@@ -51,6 +51,8 @@ package Ordenador;
  */
 
 
+import Cerrojo.Cerrojo;
+
 public class Ordenador {
 
     private double precioBase, precioDeMercado;
@@ -146,5 +148,95 @@ public class Ordenador {
     }
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    @Override //Para sobreescribir la clase
+    public String toString(){
+
+        return (this.memoria.toString() + this.procesador.toString() + this.discoDuro.toString() + this.precioBase + this.precioDeMercado + this.IVA);
+
+    }
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    @Override
+    public int hashCode(){      //Sirve para identificar al objeto (como un "ID")
+
+        return ((this.memoria.hashCode() + this.discoDuro.hashCode() + this.procesador.hashCode() + (int)this.precioBase + (int)this.precioDeMercado + (int)this.IVA) + 1);
+    }
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    public int compareTo( Ordenador objOrdenador ){     //El metodo compareTo no se sobrescribe. Compara 2 objetos
+
+        int res = -1;
+
+        if ( this.getTamanioMemoria() > objOrdenador.getTamanioMemoria() && this.getVelocidadMemoria() > objOrdenador.getVelocidadMemoria()
+            && this.getVelocidadProcesador() > objOrdenador.getVelocidadProcesador() && this.getTamanioDiscoDuro() > objOrdenador.getTamanioDiscoDuro()
+            && this.IVA > objOrdenador.IVA && this.precioDeMercado > objOrdenador.precioDeMercado
+            && this.precioBase > objOrdenador.precioBase){
+
+                res = 1;
+
+        }else {
+            if (this.getTamanioMemoria() == objOrdenador.getTamanioMemoria() && this.getVelocidadMemoria() == objOrdenador.getVelocidadMemoria()
+                    && this.getVelocidadProcesador() == objOrdenador.getVelocidadProcesador() && this.getTamanioDiscoDuro() == objOrdenador.getTamanioDiscoDuro()
+                    && this.IVA == objOrdenador.IVA && this.precioDeMercado == objOrdenador.precioDeMercado
+                    && this.precioBase == objOrdenador.precioBase ) {
+
+                res = 0;
+
+            }
+        }
+
+        return res;
+
+    }
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+    @Override
+    public boolean equals( Object obj ){        //Comprueba si 2 objetos son iguales. Devuelve booleano
+
+        boolean igual = this == obj ;
+
+        if( obj != null && obj instanceof Ordenador ){
+
+            Ordenador objOrdenador = (Ordenador)obj;    //Casteo obj a la clase Cerrojo
+
+            if( this.memoria.equals(objOrdenador.memoria) && this.procesador.equals(objOrdenador.procesador) && this.discoDuro.equals(objOrdenador.discoDuro) ){
+
+                igual = true;
+
+            }
+        }
+
+        return igual;
+
+    }
+
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    @Override
+    public Ordenador clone(){
+
+        Ordenador objOrdenador = null;
+
+        try {
+            objOrdenador = (Ordenador)super.clone();
+        }catch (CloneNotSupportedException nombreDeLaExcepcion){
+            System.out.println(nombreDeLaExcepcion.getMessage());
+        }
+
+        return objOrdenador;
+
+    }
+
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 
 }
