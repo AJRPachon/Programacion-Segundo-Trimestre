@@ -32,6 +32,9 @@ package MaquinaRefrescos;
 
 */
 
+import Ordenador.Memoria;
+import Ordenador.Procesador;
+
 public class Maquina {
 
     private double dineroTotal;
@@ -88,4 +91,88 @@ public class Maquina {
         this.dineroTotal = dineroTotal;
 
     }
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    @Override //Para sobreescribir la clase
+    public String toString(){
+
+        return (this.velocidad + this.modelo);
+
+    }
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    @Override
+    public int hashCode(){      //Sirve para identificar al objeto (como un "ID")
+
+        return (this.velocidad + 1);
+    }
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    public int compareTo( Procesador objProcesador ){     //El metodo compareTo no se sobrescribe. Compara 2 objetos
+
+        int res = -1;
+
+        if ( this.velocidad > objProcesador.velocidad ){
+
+            res = 1;
+
+        }else {
+            if ( this.velocidad == objProcesador.velocidad ) {
+
+                res = 0;
+
+            }
+        }
+
+        return res;
+
+    }
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+    @Override
+    public boolean equals( Object obj ){
+
+        boolean igual = false;
+
+        if ( obj != null && obj instanceof Memoria) {
+
+            Procesador objProcesador = (Procesador) obj;
+
+            if (this.velocidad == objProcesador.velocidad) {
+
+                igual = true;
+
+            }
+        }
+
+        return igual;
+
+    }
+
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    @Override
+    public Procesador clone(){
+
+        Procesador objProcesador = null;
+
+        try {
+            objProcesador = (Procesador)super.clone();
+        }catch (CloneNotSupportedException nombreDeLaExcepcion){
+            System.out.println(nombreDeLaExcepcion.getMessage());
+        }
+
+        return objProcesador;
+
+    }
+
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 }

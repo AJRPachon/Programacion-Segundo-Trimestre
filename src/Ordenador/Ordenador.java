@@ -51,9 +51,8 @@ package Ordenador;
  */
 
 
-import Cerrojo.Cerrojo;
 
-public class Ordenador {
+public class Ordenador implements Cloneable {
 
     private double precioBase, precioDeMercado;
     private int IVA;
