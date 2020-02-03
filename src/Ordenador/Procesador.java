@@ -64,7 +64,7 @@ public class Procesador {
     @Override //Para sobreescribir la clase
     public String toString(){
 
-        return (this.velocidad + this.modelo);
+        return ("Velocidad del procesador: "+this.velocidad+"Ghz" + "\nModelo: "+this.modelo);
 
     }
 

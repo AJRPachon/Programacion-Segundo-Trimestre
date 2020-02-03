@@ -65,7 +65,7 @@ public class DiscoDuro {
     @Override //Para sobreescribir la clase
     public String toString(){
 
-        return (this.tamanio + this.tipo);
+        return ("Tamaño: "+this.tamanio+" Gb" + "\nTipo: "+this.tipo);
 
     }
 

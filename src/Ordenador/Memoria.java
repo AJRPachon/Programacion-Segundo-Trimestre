@@ -72,7 +72,8 @@ public class Memoria {
     @Override //Para sobreescribir la clase
     public String toString(){
 
-        return (this.tamanio + this.velocidad + this.tipo);
+        return ("Tamanio de la memoria: "+this.tamanio +
+                "\nVelocidad de la memoria: "+this.velocidad+"Mhz" +"\nTipo de memoria: " +this.tipo);
 
     }
 
