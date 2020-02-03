@@ -32,8 +32,6 @@ package MaquinaRefrescos;
 
 */
 
-import Ordenador.Memoria;
-import Ordenador.Procesador;
 
 public class Maquina {
 
@@ -97,7 +95,7 @@ public class Maquina {
     @Override //Para sobreescribir la clase
     public String toString(){
 
-        return (this.velocidad + this.modelo);
+        return (this.dineroTotal + this.refrescos.toString());
 
     }
 
@@ -106,21 +104,21 @@ public class Maquina {
     @Override
     public int hashCode(){      //Sirve para identificar al objeto (como un "ID")
 
-        return (this.velocidad + 1);
+        return ((int)this.dineroTotal + 1);
     }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-    public int compareTo( Procesador objProcesador ){     //El metodo compareTo no se sobrescribe. Compara 2 objetos
+    public int compareTo( Maquina objMaquina ){     //El metodo compareTo no se sobrescribe. Compara 2 objetos
 
         int res = -1;
 
-        if ( this.velocidad > objProcesador.velocidad ){
+        if ( this.dineroTotal > objMaquina.dineroTotal ){
 
             res = 1;
 
         }else {
-            if ( this.velocidad == objProcesador.velocidad ) {
+            if ( this.dineroTotal == objMaquina.dineroTotal ) {
 
                 res = 0;
 
@@ -139,11 +137,11 @@ public class Maquina {
 
         boolean igual = false;
 
-        if ( obj != null && obj instanceof Memoria) {
+        if ( obj != null && obj instanceof Maquina) {
 
-            Procesador objProcesador = (Procesador) obj;
+            Maquina objMaquina = (Maquina) obj;
 
-            if (this.velocidad == objProcesador.velocidad) {
+            if (this.dineroTotal == objMaquina.dineroTotal) {
 
                 igual = true;
 
@@ -158,17 +156,17 @@ public class Maquina {
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     @Override
-    public Procesador clone(){
+    public Maquina clone(){
 
-        Procesador objProcesador = null;
+        Maquina objMaquina = null;
 
         try {
-            objProcesador = (Procesador)super.clone();
+            objMaquina = (Maquina)super.clone();
         }catch (CloneNotSupportedException nombreDeLaExcepcion){
             System.out.println(nombreDeLaExcepcion.getMessage());
         }
 
-        return objProcesador;
+        return objMaquina;
 
     }
 

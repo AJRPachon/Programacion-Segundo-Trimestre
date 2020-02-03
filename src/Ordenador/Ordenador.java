@@ -20,7 +20,6 @@ package Ordenador;
 
     PROPIEDADES BASICAS
         precioBase double consultable
-        precioDeMercado double consultable
         IVA int consultable
         memoria Memoria consultable
         discoDuro DiscoDuro consultable
@@ -28,7 +27,7 @@ package Ordenador;
 
 
     PROPIEDADES DERIVADAS
-        Ninguna
+        precioDeMercado double consultable
 
 
     PROPIEDADES COMPARTIDAS
@@ -38,7 +37,6 @@ package Ordenador;
     INTERFAZ
     METODOS BASICOS
         getPecioBase()
-        getPrecioDeMercado()
         getIVA()
         getMemoria()
         getDiscoDuro()
@@ -54,7 +52,7 @@ package Ordenador;
 
 public class Ordenador implements Cloneable {
 
-    private double precioBase, precioDeMercado;
+    private double precioBase;
     private int IVA;
     private Memoria memoria;
     private DiscoDuro discoDuro;
@@ -63,7 +61,6 @@ public class Ordenador implements Cloneable {
     public Ordenador(){     //Constructor
 
         this.precioBase = 0.0;
-        this.precioDeMercado = 0.0;
         this.IVA = 0;
         this.memoria = new Memoria();  //Estoy creando un objeto y se lo estoy asignando al atributo memoria
         this.discoDuro = new DiscoDuro();
@@ -71,10 +68,9 @@ public class Ordenador implements Cloneable {
 
     }
 
-    public Ordenador(double precioBase, double precioDeMercado, int IVA, Memoria memoria, DiscoDuro discoDuro, Procesador procesador){       //Constructor con parametros
+    public Ordenador(double precioBase, int IVA, Memoria memoria, DiscoDuro discoDuro, Procesador procesador){       //Constructor con parametros
 
         this.precioBase = precioBase;
-        this.precioDeMercado = precioDeMercado;
         this.IVA = IVA;
         this.memoria = memoria;
         this.discoDuro = discoDuro;
@@ -88,12 +84,12 @@ public class Ordenador implements Cloneable {
         return this.precioBase;
     }
 
-    public double getPrecioDeMercado() {
-        return this.precioDeMercado;
-    }
-
     public int getIVA() {
         return this.IVA;
+    }
+
+    public double getPrecioDeMercado() {
+        return ((this.precioBase * this.IVA) / 100) + this.precioBase;
     }
 
 //////////////////////////////////////////// MEMORIA/////////////////////////////////////////////////////////////////////////
@@ -153,7 +149,7 @@ public class Ordenador implements Cloneable {
     @Override //Para sobreescribir la clase
     public String toString(){
 
-        return (this.memoria.toString() + this.procesador.toString() + this.discoDuro.toString() + this.precioBase + this.precioDeMercado + this.IVA);
+        return (this.memoria.toString() + this.procesador.toString() + this.discoDuro.toString() + this.precioBase + this.IVA);
 
     }
 
@@ -162,7 +158,7 @@ public class Ordenador implements Cloneable {
     @Override
     public int hashCode(){      //Sirve para identificar al objeto (como un "ID")
 
-        return ((this.memoria.hashCode() + this.discoDuro.hashCode() + this.procesador.hashCode() + (int)this.precioBase + (int)this.precioDeMercado + (int)this.IVA) + 1);
+        return ((this.memoria.hashCode() + this.discoDuro.hashCode() + this.procesador.hashCode() + (int)this.precioBase + (int)this.IVA) + 1);
     }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -173,16 +169,14 @@ public class Ordenador implements Cloneable {
 
         if ( this.getTamanioMemoria() > objOrdenador.getTamanioMemoria() && this.getVelocidadMemoria() > objOrdenador.getVelocidadMemoria()
             && this.getVelocidadProcesador() > objOrdenador.getVelocidadProcesador() && this.getTamanioDiscoDuro() > objOrdenador.getTamanioDiscoDuro()
-            && this.IVA > objOrdenador.IVA && this.precioDeMercado > objOrdenador.precioDeMercado
-            && this.precioBase > objOrdenador.precioBase){
+            && this.IVA > objOrdenador.IVA && this.precioBase > objOrdenador.precioBase){
 
                 res = 1;
 
         }else {
             if (this.getTamanioMemoria() == objOrdenador.getTamanioMemoria() && this.getVelocidadMemoria() == objOrdenador.getVelocidadMemoria()
                     && this.getVelocidadProcesador() == objOrdenador.getVelocidadProcesador() && this.getTamanioDiscoDuro() == objOrdenador.getTamanioDiscoDuro()
-                    && this.IVA == objOrdenador.IVA && this.precioDeMercado == objOrdenador.precioDeMercado
-                    && this.precioBase == objOrdenador.precioBase ) {
+                    && this.IVA == objOrdenador.IVA && this.precioBase == objOrdenador.precioBase ) {
 
                 res = 0;
 
