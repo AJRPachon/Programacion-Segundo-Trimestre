@@ -23,19 +23,24 @@ public class MainOrdenador {
 
         Ordenador array[] = new Ordenador[2];
 
+        double precioBase;
+        int IVA = 7;
+
+        int tamanioMemoria, velocidadMemoria;
+        String tipoMemoria;
+
+        String modeloProcesador;
+        int velocidadProcesador;
+
+        int tamanioDiscoDuro;
+        String tipoDiscoDuro;
+
+        Memoria objMemoriaMain;
+        Procesador objProcesadorMain;
+        DiscoDuro objDiscoDuroMain;
+        Ordenador objOrdenadorMain;
+
         for(int cont = 0; cont < array.length; cont++){
-
-            double precioBase;
-            int IVA = 7;
-
-            int tamanioMemoria, velocidadMemoria;
-            String tipoMemoria;
-
-            String modeloProcesador;
-            int velocidadProcesador;
-
-            int tamanioDiscoDuro;
-            String tipoDiscoDuro;
 
             System.out.println("Introcuzca precio base para ordenador "+cont);
             precioBase = teclado.nextDouble();
@@ -69,10 +74,10 @@ public class MainOrdenador {
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-            Memoria objMemoriaMain = new Memoria(tamanioMemoria,velocidadMemoria, tipoMemoria);
-            Procesador objProcesadorMain = new Procesador(modeloProcesador, velocidadProcesador);
-            DiscoDuro objDiscoDuroMain = new DiscoDuro(tamanioDiscoDuro, tipoDiscoDuro);
-            Ordenador objOrdenadorMain = new Ordenador(precioBase, IVA, objMemoriaMain, objDiscoDuroMain, objProcesadorMain);
+            objMemoriaMain = new Memoria(tamanioMemoria,velocidadMemoria, tipoMemoria);
+            objProcesadorMain = new Procesador(modeloProcesador, velocidadProcesador);
+            objDiscoDuroMain = new DiscoDuro(tamanioDiscoDuro, tipoDiscoDuro);
+            objOrdenadorMain = new Ordenador(precioBase, IVA, objMemoriaMain, objDiscoDuroMain, objProcesadorMain);
 
             array[cont] = objOrdenadorMain;
 
