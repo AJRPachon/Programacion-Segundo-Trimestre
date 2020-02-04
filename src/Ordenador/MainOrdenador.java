@@ -40,7 +40,10 @@ public class MainOrdenador {
         DiscoDuro objDiscoDuroMain;
         Ordenador objOrdenadorMain;
 
-        for(int cont = 0; cont < array.length; cont++){
+        int resOrdenador;
+
+        //Array para añadir ordenadores
+        for(int cont = 1; cont-1 < array.length; cont++){
 
             System.out.println("Introcuzca precio base para ordenador "+cont);
             precioBase = teclado.nextDouble();
@@ -79,11 +82,16 @@ public class MainOrdenador {
             objDiscoDuroMain = new DiscoDuro(tamanioDiscoDuro, tipoDiscoDuro);
             objOrdenadorMain = new Ordenador(precioBase, IVA, objMemoriaMain, objDiscoDuroMain, objProcesadorMain);
 
-            array[cont] = objOrdenadorMain;
+            array[cont-1] = objOrdenadorMain;
 
         }
 
-        System.out.println(array[1].toString());
+        //Seleccionamos el ordenador del que deseamos ver la información
+        System.out.println("De cual ordenador desea ver la información\nHay "+array.length+" ordenadores registrados");
+        resOrdenador = teclado.nextInt();
+
+        //Para mostrar la información del ordenador seleccionado
+        System.out.println(array[resOrdenador].toString());
 
     }
 }

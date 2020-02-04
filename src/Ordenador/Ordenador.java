@@ -149,7 +149,7 @@ public class Ordenador implements Cloneable {
     @Override //Para sobreescribir la clase
     public String toString(){
 
-        return ("\nMemoria: \n"+this.memoria.toString() + "\n\nProcesador: \n"+this.procesador.toString() + "\n\nDisco Duro: \n"+this.discoDuro.toString() + "\nPrecio base:"+this.precioBase+"€" + "\nIVA: "+this.IVA+"%");
+        return ("\nMemoria: \n"+this.memoria.toString() + "\n\nProcesador: \n"+this.procesador.toString() + "\n\nDisco Duro: \n"+this.discoDuro.toString() + "\nPrecio base: "+this.precioBase+"€" + "\nIVA: "+this.IVA+"%");
 
     }
 
