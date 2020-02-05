@@ -21,7 +21,7 @@ public class MainOrdenador {
 
         Scanner teclado = new Scanner(System.in);
 
-        Ordenador array[] = new Ordenador[2];
+        Ordenador array[] = new Ordenador[2]; //Cambiar all por arraylist
 
         double precioBase;
         int IVA = 7;
@@ -41,6 +41,7 @@ public class MainOrdenador {
         Ordenador objOrdenadorMain;
 
         int resOrdenador;
+
 
         //Array para añadir ordenadores
         for(int cont = 1; cont-1 < array.length; cont++){
@@ -90,8 +91,15 @@ public class MainOrdenador {
         System.out.println("De cual ordenador desea ver la información\nHay "+array.length+" ordenadores registrados");
         resOrdenador = teclado.nextInt();
 
+        while ( resOrdenador > array.length || resOrdenador < 0 ){
+
+            System.out.println("Solo hay "+array.length+" ordenadores, introduzca cuál ordenador desea ver");
+            resOrdenador = teclado.nextInt();
+
+        }
+
         //Para mostrar la información del ordenador seleccionado
-        System.out.println(array[resOrdenador].toString());
+        System.out.println(array[resOrdenador-1].toString());
 
     }
 }
