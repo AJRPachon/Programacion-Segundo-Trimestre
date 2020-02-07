@@ -19,7 +19,7 @@ public class OrdenadorTest {
 		Procesador objProcesador = new Procesador();
 		Ordenador objOrdenador = new Ordenador(750, 7, objMemoria, objDiscoDuro, objProcesador );
 
-		assertEquals( objOrdenador.getPrecioBase(), 750, 0 );
+		assertEquals( objOrdenador.getPrecioBase(), 750, 0.001 );
 
 	}
 
