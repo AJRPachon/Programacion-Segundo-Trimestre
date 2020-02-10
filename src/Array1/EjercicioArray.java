@@ -53,7 +53,8 @@ class EjercicioArray {
  public static void main (String[] args){
 
      //practicaArray();
-     arrayVeinte();
+     //arrayVeinte();
+     arrayAlReves();
 
  }
 
@@ -180,11 +181,10 @@ class EjercicioArray {
 
     /*
     SIGNATURA:
-        public static void arrayPrimos()
+        public static void arrayAlReves()
 
     COMENTARIO:
-          c. Dado un array de números enteros, generar a partir de él un nuevo array donde se almacenen
-            los elementos del primero que sean primos.
+          d. A partir de un array generar otro con los elementos al revés.
 
     PRECONDICIONES:
         Ninguna
@@ -204,29 +204,38 @@ class EjercicioArray {
 
      */
 
-    public static void arrayPrimos(){
+    public static void arrayAlReves(){
 
-        int cont2 = 0;
-        int numeros[] = new int[10];
-        int primos[] = new int[cont2];
-        int elementos;
+        int derecho[] = new int[10];
+        int contrario[] = new int [10];
+        int cont2 = derecho.length-1;
+
+
+        int aleatorio;
 
         Random rnd = new Random();
 
+        for(int cont = 0; cont < derecho.length; cont++) {
 
-        for(int cont = 0; cont < primos.length; cont++){
+            aleatorio = rnd.nextInt(10) + 1;
 
-            elementos = rnd.nextInt(20)+1;
+            derecho[cont] = aleatorio;
 
-            numeros[cont] = elementos;
+            contrario[cont2] = aleatorio;
 
-            if (elementos ){
+            cont2--;
 
-
-            }
+            System.out.print(derecho[cont]+" | ");
 
         }
 
+        System.out.println();
+
+        for(int cont = 0; cont < contrario.length; cont++) {
+
+            System.out.print(contrario[cont]+" | ");
+
+        }
 
 
     }
