@@ -67,13 +67,13 @@ public class Vuelo {
 
         Scanner teclado = new Scanner(System.in);
 
-        int opcion=0;
+        int opcion;
         int asientos[] = new int [16];
         int fumador[] = new int [4];
         int fumadores = 0;
         int pasajeros = 0;
-        int asientosDisponibles = 0;
-        int asientosDisponiblesFumadores = 0;
+        int asientosDisponibles;
+        int asientosDisponiblesFumadores;
         int cont = 0;
         int cont2 = 0;
 
@@ -179,9 +179,7 @@ public class Vuelo {
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-
         }while (opcion != 3);
-
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
