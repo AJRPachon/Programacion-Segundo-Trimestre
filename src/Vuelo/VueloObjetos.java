@@ -4,7 +4,8 @@ package Vuelo;
     PROPIEDADES BASICAS:
         int fumadores
         int pasajeros
-
+        int asientos[]
+        
 
     PROPIEDADES DERIVADAS:
         Ninguna
@@ -26,8 +27,6 @@ package Vuelo;
     
 */
 
-
-import org.jetbrains.annotations.NotNull;
 
 public class VueloObjetos {
 
@@ -115,6 +114,7 @@ public class VueloObjetos {
 
     }
 
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     public int compareTo(VueloObjetos objVueloObjetos){
 
@@ -136,7 +136,7 @@ public class VueloObjetos {
 
     }
 
-
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 }
 
