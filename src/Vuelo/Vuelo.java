@@ -70,65 +70,120 @@ public class Vuelo {
         int opcion=0;
         int asientos[] = new int [16];
         int fumador[] = new int [4];
-        int pasajeros = 1;
-        int asientosDisponibles;
-        int asientosDisponiblesFumadores;
-        int fumadores = 1;
-        int cont=0;
+        int fumadores = 0;
+        int pasajeros = 0;
+        int asientosDisponibles = 0;
+        int asientosDisponiblesFumadores = 0;
+        int cont = 0;
+        int cont2 = 0;
 
-        do {
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-            //Preguntar si es fumador o no //16 asientos
-            System.out.println("[1]No fumador\n[2]Fumador");
-            opcion = teclado.nextInt()-1;
+        //Mostrar todos los asientos disponibles en el vuelo
+        System.out.println("Hay disponibles "+asientos.length+" asientos para no fumadores");
+        System.out.println("Hay disponibles "+fumador.length+" asientos para fumadores");
+
+        //Preguntar si es fumador o no //16 asientos
+        System.out.println("\nIndique donde desea sentarse");
+        System.out.println("[1]No fumador\n[2]Fumador");
+        opcion = teclado.nextInt();
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+        do{  //Para repetir el programa
 
             //Leer y validar opcion
-/*
-            if(asientos[16] == pasajeros ){
-                //Preguntar si desea cambiar a zona fumador o salir
-                //Leer opcion y validar
+            while( opcion != 1 && opcion != 2 ){
+                System.out.println("Respuesta incorrecta, por favor, selecciona una de las opciones disponibles");
+                System.out.println("[1] No fumador\n[2] Fumador");
+                opcion = teclado.nextInt();
             }
 
-            if(fumador[4] == fumadores){
-              //Preguntar si desea cambiar a zona no fumador o salir
-              //Leer opcion y validar
-            }
-*/
             switch (opcion) { //fumador o no
 
                 case 1:  //opcion1 no fumador
-                    //Mostrar numero de asientos disponibles
-                    if (asientos[cont] == 0) {
-                        asientosDisponibles = asientos.length - cont;
-                        System.out.println("Hay "+asientosDisponibles+" asientos disponibles para no fumadores");
-                        cont++;
-                    }
 
                     //Asignar asiento y mostrar
-                    asientos[pasajeros-1] = pasajeros;
                     pasajeros++;
+                    asientos[cont2] = pasajeros;
+
+                    //Mostrar numero de asientos restantes disponibles
+                    asientosDisponibles = asientos.length - cont2-1;
+                    System.out.println("Quedan "+asientosDisponibles+" asientos disponibles para no fumadores");
+                    cont2++;
 
                 break;
 
 
                 case 2:  //opcion2 fumador //4 asientos
-                    //Mostrar numero de asientos disponibles
-                    if (fumador[cont] == 0) {
-                        asientosDisponiblesFumadores = fumador.length - cont;
-                        System.out.println("Hay "+asientosDisponiblesFumadores+" asientos disponibles para no fumadores");
-                        cont++;
-                    }
 
                     //Asignar asiento y mostrar
-                     fumador[fumadores-1] = fumadores;
-                     fumadores++;
+                    fumadores++;
+                    fumador[cont] = fumadores;
 
-                 break;
+                    //Mostrar numero de asientos restantes disponibles
+                    asientosDisponiblesFumadores = fumador.length - cont-1;
+                    System.out.println("Quedan "+asientosDisponiblesFumadores+" asientos disponibles para fumadores");
+                    cont++;
+
+                break;
 
             } //Fin Segun
 
+            if( fumador[3] == 0 || asientos[15] == 0) {
+                System.out.println("\nElija asiento en las siguientes zonas:\n[1] No fumador\n[2] Fumador");
+                opcion = teclado.nextInt();
+            }
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+            if ( asientos[15] == 16 && fumador[3] == 4 ) {
+                System.out.println("\nLo sentimos pero no quedan más asientos disponibles en este vuelo");
+                System.out.println("Si ha realizado la reserva del asiento, la llevaremos a cabo, en caso contrario, pruebe a mirar los horarios disponibles para el próximo vuelo");
+                opcion = 3;
+            }
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+            //Preguntar si desea cambiar a zona fumador o salir
+            if( asientos[15] != 0 && opcion == 1){
+                System.out.println("\nNo hay mas asientos disponibles en la zona de no fumadores");
+                System.out.println("¿Desea cancelar la reserva o elegir un asiento en la zona de fumadores?");
+                System.out.println("[3] Cancelar vuelo\n[2] Asiento en zona de fumadores");
+                opcion = teclado.nextInt();
+
+                //Leer opcion y validar
+                while (opcion != 3 && opcion != 2) {
+                    System.out.println("Respuesta incorrecta, por favor, selecciona una de las opciones disponibles");
+                    System.out.println("[3] Cancelar vuelo\n[2] Asiento en zona de fumadores");
+                    opcion = teclado.nextInt();
+                }
+            }
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+            //Preguntar si desea cambiar a zona no fumador o salir
+            if( fumador[3] != 0 && opcion == 2) {
+                System.out.println("\nNo hay mas asientos disponibles en la zona de fumadores");
+                System.out.println("¿Desea cancelar la reserva o elegir un asiento en la zona de no fumadores?");
+                System.out.println("[3] Cancelar vuelo\n[1] Asiento en zona de no fumadores");
+                opcion = teclado.nextInt();
+
+                //Leer opcion y validar
+                while (opcion != 3 && opcion != 1) {
+                    System.out.println("Respuesta incorrecta, por favor, selecciona una de las opciones disponibles");
+                    System.out.println("[3] Cancelar vuelo\n[1] Asiento en zona de no fumadores");
+                    opcion = teclado.nextInt();
+                }
+            }
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
         }while (opcion != 3);
 
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     }
 }
