@@ -29,21 +29,21 @@ package Vuelo;
 */
 
 
-public class Asientos {
+public class Asiento {
 
     private boolean fumadores;
     private boolean ocupado;
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-        public Asientos(){ //Constructor
+        public Asiento(){ //Constructor
 
             this.fumadores = false;
             this.ocupado = false;
 
         }
 
-        public Asientos(boolean fumadores, boolean ocupado){  //Constructor con parametros
+        public Asiento(boolean fumadores, boolean ocupado){  //Constructor con parametros
 
             this.fumadores = fumadores;
             this.ocupado = ocupado;
@@ -84,11 +84,11 @@ public class Asientos {
 
             boolean igual = false;
 
-            if ( obj != null && obj instanceof Asientos) {
+            if ( obj != null && obj instanceof Asiento) {
 
-                Asientos objAsientos = (Asientos) obj;
+                Asiento objAsiento = (Asiento) obj;
 
-                if (this.fumadores == objAsientos.fumadores && this.ocupado == objAsientos.ocupado ) {
+                if (this.fumadores == objAsiento.fumadores && this.ocupado == objAsiento.ocupado ) {
 
                     igual = true;
 
@@ -100,17 +100,17 @@ public class Asientos {
         }
 
         @Override
-        public Asientos clone(){
+        public Asiento clone(){
 
-            Asientos objAsientos = null;
+            Asiento objAsiento = null;
 
             try {
-                objAsientos = (Asientos)super.clone();
+                objAsiento = (Asiento)super.clone();
             }catch (CloneNotSupportedException nombreDeLaExcepcion){
                 System.out.println(nombreDeLaExcepcion.getMessage());
             }
 
-            return objAsientos;
+            return objAsiento;
 
         }
 
