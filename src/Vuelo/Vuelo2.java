@@ -102,7 +102,7 @@ public class Vuelo2 {
                     //Mostrar numero de asientos restantes disponibles para no fumadores
                     objVuelo.asientosRNF();
                     seleccionAsiento = teclado.nextInt();
-
+                    
                     //TODO Tengo que cambiar la posición que se elija como ocupada
                     //TODO Validar que haya seleccionado un asiento libre
 
