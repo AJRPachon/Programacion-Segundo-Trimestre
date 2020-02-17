@@ -4,7 +4,7 @@ package Vuelo;
 
     PROPIEDADES BASICAS:
         int fumadores
-        int ocupado
+        int normales
         int asientos[]
 
 
@@ -19,7 +19,7 @@ package Vuelo;
     INTERFAZ
     METODOS BASICOS:
         getFumadores()
-        getOcupado()
+        getNormales()
 
 
     METODOS AÑADIDOS:
@@ -32,21 +32,21 @@ package Vuelo;
 public class Asiento {
 
     private boolean fumadores;
-    private boolean ocupado;
+    private boolean normales;
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
         public Asiento(){ //Constructor
 
             this.fumadores = false;
-            this.ocupado = false;
+            this.normales = false;
 
         }
 
-        public Asiento(boolean fumadores, boolean ocupado){  //Constructor con parametros
+        public Asiento(boolean fumadores, boolean normales){  //Constructor con parametros
 
             this.fumadores = fumadores;
-            this.ocupado = ocupado;
+            this.normales = normales;
 
         }
 
@@ -58,9 +58,9 @@ public class Asiento {
 
         }
 
-        public boolean getOcupado(){
+        public boolean getNormales(){
 
-            return this.ocupado;
+            return this.normales;
 
         }
 
@@ -68,7 +68,7 @@ public class Asiento {
         @Override
         public String toString(){
 
-            return ("El numero de fumadores son: "+this.fumadores+"\nEl numero de pasajeros son: "+this.ocupado);
+            return ("El numero de fumadores son: "+this.fumadores+"\nEl numero de pasajeros son: "+this.normales);
 
         }
 
@@ -88,7 +88,7 @@ public class Asiento {
 
                 Asiento objAsiento = (Asiento) obj;
 
-                if (this.fumadores == objAsiento.fumadores && this.ocupado == objAsiento.ocupado ) {
+                if (this.fumadores == objAsiento.fumadores && this.normales == objAsiento.normales ) {
 
                     igual = true;
 

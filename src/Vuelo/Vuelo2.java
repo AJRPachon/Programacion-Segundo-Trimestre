@@ -76,8 +76,7 @@ public class Vuelo2 {
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
         //Mostrar todos los asientos disponibles en el vuelo
-        System.out.println("Hay disponibles "+objVuelo.calcularOcupadosNF()+" asientos para no fumadores");
-        System.out.println("Hay disponibles "+objVuelo.calcularFumadores()+" asientos para fumadores");
+        objVuelo.imprimirAsientosDisp(); //Imprime los asientos disponibles totales (16 NF, 4Fum Es el máximo que puede imprimir)
 
         //Preguntar si es fumador o no //16 asientos
         System.out.println("\nIndique donde desea sentarse");
@@ -99,49 +98,41 @@ public class Vuelo2 {
 
                 case 1:  //opcion1 no fumador
 
-                    //Mostrar cuales son los asientos que quedan libres y asignar asiento
-                    /*for(int cont = 0; cont < objVuelo.getAsiento().length; cont++){
-
-                        System.out.println("\nLos asientos libres son: "+cont+1);
-
-                    }*/
-
-                    System.out.println("Seleccione el asiento donde desea sentarse");
+                    System.out.println("\nSeleccione el asiento donde desea sentarse");
+                    //Mostrar numero de asientos restantes disponibles para no fumadores
+                    objVuelo.asientosRNF();
                     seleccionAsiento = teclado.nextInt();
 
-
-
-                    //Mostrar numero de asientos restantes disponibles
-                    asientosDisponibles = asientos.length - cont2-1;
-                    System.out.println("Quedan "+asientosDisponibles+" asientos disponibles para no fumadores");
-                    cont2++;
+                    //TODO Tengo que cambiar la posición que se elija como ocupada
+                    //TODO Validar que haya seleccionado un asiento libre
 
                     break;
 
 
                 case 2:  //opcion2 fumador //4 asientos
 
-                    //Asignar asiento y mostrar
-                    fumadores++;
-                    fumador[cont] = fumadores;
+                    System.out.println("Seleccione el asiento donde desea sentarse");
 
-                    //Mostrar numero de asientos restantes disponibles
-                    asientosDisponiblesFumadores = fumador.length - cont-1;
-                    System.out.println("Quedan "+asientosDisponiblesFumadores+" asientos disponibles para fumadores");
-                    cont++;
+                    //Mostrar numero de asientos restantes disponibles para fumadores
+                    objVuelo.asientosRF();
+                    seleccionAsiento = teclado.nextInt();
+
+                    //TODO Tengo que cambiar la posición que se elija como ocupada
+                    //TODO Validar que haya seleccionado un asiento libre
 
                     break;
 
             } //Fin Segun
 
-            if( fumador[3] == 0 || asientos[15] == 0) {
+            if( !objVuelo.getNormalesAsiento(15) || !objVuelo.getFumadoresAsiento(19)) {
                 System.out.println("\nElija asiento en las siguientes zonas:\n[1] No fumador\n[2] Fumador");
                 opcion = teclado.nextInt();
             }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-            if ( asientos[15] == 16 && fumador[3] == 4 ) {
+            //Si se han llenado todos los asientos del vuelo, sale directamente de la reserva
+            if ( objVuelo.getFumadoresAsiento(15) && objVuelo.getNormalesAsiento(19)) {
                 System.out.println("\nLo sentimos pero no quedan más asientos disponibles en este vuelo");
                 System.out.println("Si ha realizado la reserva del asiento, la llevaremos a cabo, en caso contrario, pruebe a mirar los horarios disponibles para el próximo vuelo");
                 opcion = 3;
@@ -150,7 +141,7 @@ public class Vuelo2 {
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
             //Preguntar si desea cambiar a zona fumador o salir
-            if( asientos[15] != 0 && opcion == 1){
+            if( objVuelo.getNormalesAsiento(15) && opcion == 1){
                 System.out.println("\nNo hay mas asientos disponibles en la zona de no fumadores");
                 System.out.println("¿Desea cancelar la reserva o elegir un asiento en la zona de fumadores?");
                 System.out.println("[3] Cancelar vuelo\n[2] Asiento en zona de fumadores");
@@ -167,7 +158,7 @@ public class Vuelo2 {
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
             //Preguntar si desea cambiar a zona no fumador o salir
-            if( fumador[3] != 0 && opcion == 2) {
+            if( objVuelo.getFumadoresAsiento(19) && opcion == 2) {
                 System.out.println("\nNo hay mas asientos disponibles en la zona de fumadores");
                 System.out.println("¿Desea cancelar la reserva o elegir un asiento en la zona de no fumadores?");
                 System.out.println("[3] Cancelar vuelo\n[1] Asiento en zona de no fumadores");

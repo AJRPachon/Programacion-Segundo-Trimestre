@@ -39,9 +39,15 @@ public class VueloObjetos {
     public VueloObjetos(){ //Constructor
 
         this.asientos = new Asiento[20];
+
+        for( int cont = 0; cont < asientos.length; cont++ ){
+
+            asientos[cont] = new Asiento(); //Para ponerle un valor por defecto (Lo he inicializado)
+
+        }
     }
 
-    public VueloObjetos(int fumadores, int pasajeros, Asiento[] asientos){  //Constructor con parametros
+    public VueloObjetos(Asiento[] asientos){  //Constructor con parametros
 
         this.asientos = asientos;
     }
@@ -54,9 +60,9 @@ public class VueloObjetos {
         return this.asientos[posicion].getFumadores();
     }
 
-    public boolean getOcupadosAsiento(int posicion){
+    public boolean getNormalesAsiento(int posicion){
 
-        return this.asientos[posicion].getOcupado();
+        return this.asientos[posicion].getNormales();
     }
 
 
@@ -67,16 +73,34 @@ public class VueloObjetos {
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-    //Metodo para calcular asientos ocupados por fumadores
+    //Metodo para calcular el numero de asientos ocupados por no fumadores
+    public int calcularNormales(){
+
+        int contadorNormales=0;
+
+        for(int cont = 0; cont < 16; cont++) { //16 porque es hasta donde llegan los no fumadores
+
+            if (asientos[cont].getNormales()) { //Para saber si el asiento está ocupado o no
+
+                contadorNormales++;
+            }
+        }
+        return contadorNormales;
+    }
+
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    //Metodo para calcular el numero de asientos ocupados por fumadores
     public int calcularFumadores(){
 
         int contadorFumadores=0;
 
         for(int cont = 16; cont < asientos.length; cont++)
 
-            if( asientos[cont].getOcupado()){  //Como quiero conocer los asientos de fumadores, debo de llamar al metodo getOcupado() para saber cuales están ocupados y cuales no
+            if( asientos[cont].getFumadores()){ //Para saber si el asiento está ocupado o no
 
-                  contadorFumadores++;
+                contadorFumadores++;
             }
         return contadorFumadores;
     }
@@ -86,16 +110,16 @@ public class VueloObjetos {
 
     /*
         SIGNATURA:
-            public Asiento[] asientosDisponibles()
+            public int[] asientosDisponiblesNF()
 
         COMENTARIO:
-            El metodo tiene que crear un nuevo array con los asientos disponibles
+            El metodo tiene que crear un nuevo array con los asientos disponibles (int)
 
         ENTRADAS:
             Ninguna
 
         SALIDAS:
-            Array con los asientos disponibles
+            Array de int con los asientos disponibles
 
         ENTRADA/SALIDA:
             Ninguna
@@ -104,66 +128,135 @@ public class VueloObjetos {
             Ninguna
 
         POSTCONDICIONES:
-            El metodo devuelve asociado al nombre el Array cargado con los asientos
+            El metodo devuelve asociado al nombre el Array cargado con los asientos (int)
+
+     */
+
+    //Metodo para calcular asientos libres de no fumadores
+
+    public int[] asientosDisponiblesNF() {
+
+        //Calculo numero de asientos vacios de no fumadores
+        int cont2 = 0;
+        for (int cont = 0; cont < 16; cont++){  // 16 porque son los asientos de no fumadores
+
+            if( !asientos[cont].getNormales() ){
+                cont2++;
+            }
+        }
+
+        //Creo el nuevo objeto para guardar la longitud total del array que quiero devolver
+        int aDNF[] = new int[cont2];
+
+        //Añadir los asientos que están vacios a nuestro nuevo array
+        int cont3 = 0;
+        for (int cont = 0; cont < 16; cont++){
+
+            if( !asientos[cont].getNormales() ){
+
+                aDNF[cont3] = cont+1;
+                cont3++;
+            }
+        }
+
+        return aDNF;
+
+    }
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    /*
+        SIGNATURA:
+            public int[] asientosDisponiblesF()
+
+        COMENTARIO:
+            El metodo tiene que crear un nuevo array con los asientos disponibles (int)
+
+        ENTRADAS:
+            Ninguna
+
+        SALIDAS:
+            Array de int con los asientos disponibles
+
+        ENTRADA/SALIDA:
+            Ninguna
+
+        PRECONDICIONES:
+            Ninguna
+
+        POSTCONDICIONES:
+            El metodo devuelve asociado al nombre el Array cargado con los asientos (int)
 
      */
 
     //Metodo para calcular asientos libres de fumadores
-    public Asiento[] asientosDisponiblesNF() {
 
-        int asientosDisponiblesNF=0;
-        Asiento[] aD = new Asiento[];
+    public int[] asientosDisponiblesF(){
 
-        //Calculo numero de asientos vacios
-        for (int cont = 0; cont < 17; cont++){
+        //Calcular la cantidad de asientos de no fumadores que están libres
+        int cont2 = 0;
+        for( int cont = 17; cont < asientos.length; cont++ ){
 
-            if( asientos[cont].getOcupado() ){
-
-                asientosDisponiblesNF++;
+            if ( !asientos[cont].getFumadores() ) {
+                cont2++;
             }
-
         }
 
-        for ( int cont = 0; cont < 17; cont++ ){ //del 0 al 17 porque son los numeros que puede tener el asiento
-
-            if( asientos[cont].getOcupado() ){
-
+        //Crear un nuevo array con los asientos de fumadores disponibles y la longitud de cont2
+        int aDF[] = new int[cont2];
 
 
-            }
+        //Cargar el nuevo array con los valores de los asientos libres
+        int cont3 = 0;
 
+        for( int cont = 17; cont < asientos.length; cont++ ){
+
+            aDF[cont3] = cont+1;
+            cont3++;
         }
 
+        return aDF;
+    }
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-        //Añado el numero de asientos vacios al nuevo array
-
+    public void imprimirAsientosDisp() {
+        System.out.println("Hay disponibles " + calcularNormales() + " para personas no fumadoras\n Hay disponibles " + calcularFumadores() + " para personas fumadoras");
     }
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-    //Metodo para calcular asientos ocupados por no fumadores
-    public int calcularOcupadosNF(){
+//Mostrar numero de asientos restantes disponibles para no fumadores
 
-        int contadorOcupadosNF = 0;
+    public void asientosRNF() {
+        System.out.print("Los asientos disponibles para no fumadores son: ");
+        System.out.println(Arrays.toString(asientosDisponiblesNF()));
+    }
 
-        for(int cont = 0; cont < 16; cont++){
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-            if( asientos[cont].getOcupado() ){ // seria = a true, con !asien... seria = false
+//Mostrar numero de asientos restantes disponibles para fumadores
 
-                contadorOcupadosNF++;
+    public void asientosRF() {
+        System.out.print("\nLos asientos disponibles para fumadores son: ");
+
+        for (int cont = 0; cont < asientosDisponiblesF().length; cont++) {
+            System.out.print(Arrays.toString(asientosDisponiblesF()) + " ,"); //Hacer un if para que no salga la última coma
+
+            if( cont == asientosDisponiblesF().length-1 ){
+                System.out.print(Arrays.toString(asientosDisponiblesF()));
             }
         }
-        return contadorOcupadosNF;
     }
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-    @Override
+/*
+    @Override  //TODO Crear un nuevo metodo toString
     public String toString(){
 
-        return ("El numero de fumadores son: "+calcularFumadores()+"\nEl numero de pasajeros son: "+calcularOcupadosNF());
-    }
+        return ();
+    }*/
 
     @Override
     public int hashCode(){
