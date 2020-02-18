@@ -2,9 +2,7 @@ package Vuelo;
 /*
 
     PROPIEDADES BASICAS:
-        int fumadores
-        int pasajeros
-        int asientos[]
+        Asiento asientos[]
         
 
     PROPIEDADES DERIVADAS:
@@ -17,8 +15,9 @@ package Vuelo;
 
     INTERFAZ
     METODOS BASICOS:
-        getFumadores()
-        getPasajeros()
+        getAsiento()
+        getFumadoresAsiento()  //patron de legacion
+        getNormalesAsiento()   //patron de legacion
 
 
     METODOS AÑADIDOS:
@@ -57,19 +56,46 @@ public class VueloObjetos {
     //creamos una variable posición pasada por parámetros para coger una casilla concreta del array
     public boolean getFumadoresAsiento(int posicion){
 
-        return this.asientos[posicion].getFumadores();
+        return this.asientos[posicion-1].getFumadores();
     }
 
     public boolean getNormalesAsiento(int posicion){
 
-        return this.asientos[posicion].getNormales();
+        return this.asientos[posicion-1].getNormales();
     }
-
 
     public Asiento[] getAsiento(){
 
         return this.asientos;
     }
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    //Metodo para cambiar la posicion del asiento a true (ocupado)
+    /*
+        SIGNATURA:
+            public void asignarAsiento(int posicionAsiento)
+
+        COMENTARIO:
+            El metodo tiene cambiar la posicion del asiento a true (ocupado)
+
+        ENTRADAS:
+            Asiento que queremos cambiar
+
+     */
+
+    public void asignarAsientoN(int posicionAsiento){
+
+        this.asientos[posicionAsiento-1].setNormales();
+
+    }
+
+    public void asignarAsientoF(int posicionAsiento){
+
+        this.asientos[posicionAsiento-1].setFumadores();
+
+    }
+
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -153,7 +179,6 @@ public class VueloObjetos {
         for (int cont = 0; cont < 16; cont++){
 
             if( !asientos[cont].getNormales() ){
-
                 aDNF[cont3] = cont+1;
                 cont3++;
             }
@@ -195,7 +220,7 @@ public class VueloObjetos {
 
         //Calcular la cantidad de asientos de no fumadores que están libres
         int cont2 = 0;
-        for( int cont = 17; cont < asientos.length; cont++ ){
+        for( int cont = 16; cont < asientos.length; cont++ ){
 
             if ( !asientos[cont].getFumadores() ) {
                 cont2++;
@@ -209,10 +234,13 @@ public class VueloObjetos {
         //Cargar el nuevo array con los valores de los asientos libres
         int cont3 = 0;
 
-        for( int cont = 17; cont < asientos.length; cont++ ){
+        for( int cont = 16; cont < asientos.length; cont++ ){
 
-            aDF[cont3] = cont+1;
-            cont3++;
+            if ( !asientos[cont].getFumadores() ) {
+                aDF[cont3] = cont + 1;
+                cont3++;
+            }
+
         }
 
         return aDF;
@@ -220,7 +248,7 @@ public class VueloObjetos {
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     public void imprimirAsientosDisp() {
-        System.out.println("Hay disponibles " + calcularNormales() + " para personas no fumadoras\n Hay disponibles " + calcularFumadores() + " para personas fumadoras");
+        System.out.println("Hay disponibles " + calcularNormales() + " para personas no fumadoras\nHay disponibles " + calcularFumadores() + " para personas fumadoras");
     }
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -237,15 +265,8 @@ public class VueloObjetos {
 //Mostrar numero de asientos restantes disponibles para fumadores
 
     public void asientosRF() {
-        System.out.print("\nLos asientos disponibles para fumadores son: ");
-
-        for (int cont = 0; cont < asientosDisponiblesF().length; cont++) {
-            System.out.print(Arrays.toString(asientosDisponiblesF()) + " ,"); //Hacer un if para que no salga la última coma
-
-            if( cont == asientosDisponiblesF().length-1 ){
-                System.out.print(Arrays.toString(asientosDisponiblesF()));
-            }
-        }
+        System.out.print("Los asientos disponibles para fumadores son: ");
+        System.out.println(Arrays.toString(asientosDisponiblesF()));
     }
 
 
