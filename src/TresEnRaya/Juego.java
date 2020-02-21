@@ -79,7 +79,19 @@ public class Juego {
 
 //TODO //////////////////////// METODOS OVERRIDE ////////////////////////////////////////////////////////////
 
+    public void imprimirTablero(){
 
+        for(int cont = 0; cont < casillas.length; cont++){
+
+            for(int cont2 = 0; cont2 < casillas.length; cont2++){
+
+                System.out.print(this.casillas[cont][cont2].comprobarCasilla()+" | ");
+            }
+
+            System.out.println();
+        }
+
+    }
 
 
 }

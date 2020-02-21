@@ -67,8 +67,40 @@ public class Casilla {
         return this.equis = true;
     }
 
-//TODO //////////////////////// METODOS OVERRIDE ////////////////////////////////////////////////////////////
 
+//////////////////////// METODO COMPROBAR CASILLA ////////////////////////////////////////////////////////////////////////////
+
+    /*
+        NECESIDADES:
+            Imprime 'X' cuando el atributo(equis) de la clase es true.
+            Imprime 'O' cuando el atributo(circulo) de la clase es true.
+            Imprime ' ' cuando los dos atributos de la clase son false.
+     */
+
+    public char comprobarCasilla(){
+
+        char valor = ' ';
+
+        if( this.getEquis() ){
+            valor = 'X';
+
+        }else{
+            if( this.getCirculo() ) {
+                valor = 'O';
+            }
+        }
+
+        return valor;
+    }
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+
+
+
+//TODO //////////////////////// METODOS OVERRIDE ////////////////////////////////////////////////////////////
 
 
 }

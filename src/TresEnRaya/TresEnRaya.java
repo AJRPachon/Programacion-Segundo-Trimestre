@@ -28,6 +28,7 @@ public class TresEnRaya {
 
         int posicion1=0, posicion2=0;
         int hola;
+        int jugador;
 
         //Comprobar si la casilla elegida está libre
         do {
@@ -39,7 +40,7 @@ public class TresEnRaya {
             if (!objJuego.getCasillaCirculo(posicion1, posicion2)) {
 
                 objJuego.setCasillaCirculo(posicion1, posicion2);  //ASIGNAR POSICIÓN CIRCULO
-
+                objJuego.imprimirTablero();
 
             } else {
                 System.out.println("La posición seleccionada ya se encuentra ocupada por:"); //saber si es una 'X' o 'O'
