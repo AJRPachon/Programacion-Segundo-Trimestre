@@ -76,6 +76,107 @@ public class Juego {
         this.casillas[posicion1-1][posicion2-1].setEquis();
     }
 
+//////////////////// COMPROBAR GANADOR EQUIS /////////////////////////////////////////////////////////////////////////////////
+
+    public boolean comprobarGanadorEquis(){
+
+        boolean ganador = false;
+        int acumulaGanadorEquisV=0;    //Vertical
+        int acumulaGanadorEquisH=0;    //Horizontal    // Si llega a 3, sabré que ha hecho linea, por lo tanto ha ganado
+        int acumulaGanadorEquisD1 = 0; //Diagonal 1
+        int acumulaGanadorEquisD2 = 0; //Diagonal negativa
+
+        for (int cont = 1; cont < this.casillas.length+1; cont++){ //cont recorre las filas
+            if( acumulaGanadorEquisV !=3 && acumulaGanadorEquisH != 3 ) { // para si llega a 3, que deje de contar
+
+                acumulaGanadorEquisV=0; //Pongo estas variables a 0 para que cuando cambie el cont1 de valor, vuelvan a estar a 0, si no daría un ganador antes de tiempo
+                acumulaGanadorEquisH=0;
+
+                for (int cont2 = 1; cont2 < this.casillas.length+1; cont2++) { //cont2 recorre las columnas
+
+                    if (getCasillaEquis(cont, cont2)) { //para saber si en esa casilla, en esa posición hay una Equis en Horizontal
+                        acumulaGanadorEquisH += 1;
+                    }
+
+                    if (getCasillaEquis(cont2, cont)) { //para saber si en esa casilla, en esa posición hay una Equis en Vertical
+                        acumulaGanadorEquisV += 1;
+                    }
+                }
+            }
+        }
+
+        for(int cont=1, cont2=3; cont < 3; cont++, cont2--){ // Para la diagonal de 0.2 - 1.1 - 2.0
+
+            if( getCasillaEquis(cont2,cont) ){ // Para la diagonal de 0.2 - 1.1 - 2.0
+                acumulaGanadorEquisD1 += 1;
+            }
+
+            if ( getCasillaEquis(cont,cont) ){ // Para la diagonal sucesiva de 0.0 - 1.1 - 2.2
+                acumulaGanadorEquisD2 += 1;
+            }
+
+        }
+
+        if ( acumulaGanadorEquisV == 3 || acumulaGanadorEquisH == 3 || acumulaGanadorEquisD1 == 3 || acumulaGanadorEquisD2 == 3 ) {  //Para saber si ha ganado
+            ganador = true;
+        }
+
+
+        return ganador;
+
+    }
+
+
+//////////////////// COMPROBAR GANADOR CIRCULO /////////////////////////////////////////////////////////////////////////////////
+
+    public boolean comprobarGanadorCirculo(){
+
+        boolean ganador = false;
+        int acumulaGanadorCiculoV=0;    //Vertical
+        int acumulaGanadorCiculoH=0;    //Horizontal    // Si llega a 3, sabré que ha hecho linea, por lo tanto ha ganado
+        int acumulaGanadorCirculoD1 = 0; //Diagonal
+        int acumulaGanadorCiculoD2 = 0;
+
+        for (int cont = 1; cont < this.casillas.length+1; cont++){ //cont recorre las filas
+            if( acumulaGanadorCiculoV !=3 && acumulaGanadorCiculoH != 3 ) { // para si llega a 3, que deje de contar
+
+                acumulaGanadorCiculoV=0; //Pongo estas variables a 0 para que cuando cambie el cont1 de valor, vuelvan a estar a 0, si no daría un ganador antes de tiempo
+                acumulaGanadorCiculoH=0;
+
+                for (int cont2 = 1; cont2 < this.casillas.length+1; cont2++) { //cont2 recorre las columnas
+
+                    if (getCasillaCirculo(cont, cont2)) { //para saber si en esa casilla, en esa posición hay una Equis en Horizontal
+                        acumulaGanadorCiculoH += 1;
+                    }
+
+                    if (getCasillaCirculo(cont2, cont)) { //para saber si en esa casilla, en esa posición hay una Equis en Vertical
+                        acumulaGanadorCiculoV += 1;
+                    }
+                }
+            }
+        }
+
+        for(int cont=1, cont2=3; cont < 3; cont++, cont2--){ // Para la diagonal de 0.2 - 1.1 - 2.0
+
+            if( getCasillaCirculo(cont2,cont) ){ // Para la diagonal de 0.2 - 1.1 - 2.0
+                acumulaGanadorCirculoD1 += 1;
+            }
+
+            if ( getCasillaCirculo(cont,cont) ){ // Para la diagonal sucesiva de 0.0 - 1.1 - 2.2
+                acumulaGanadorCiculoD2 += 1;
+            }
+
+        }
+
+
+        if ( acumulaGanadorCiculoV == 3 || acumulaGanadorCiculoH == 3 || acumulaGanadorCirculoD1 == 3 || acumulaGanadorCiculoD2 ==3 ) {  //Para saber si ha ganado
+            ganador = true;
+        }
+
+        return ganador;
+    }
+
+
 
 //TODO //////////////////////// METODOS OVERRIDE ////////////////////////////////////////////////////////////
 
