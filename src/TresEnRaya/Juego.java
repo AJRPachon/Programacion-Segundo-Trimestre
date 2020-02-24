@@ -105,7 +105,7 @@ public class Juego {
             }
         }
 
-        for(int cont=1, cont2=3; cont < 3; cont++, cont2--){ // Para la diagonal de 0.2 - 1.1 - 2.0
+        for(int cont=1, cont2=3; cont < 4; cont++, cont2--){ // Para la diagonal de 0.2 - 1.1 - 2.0
 
             if( getCasillaEquis(cont2,cont) ){ // Para la diagonal de 0.2 - 1.1 - 2.0
                 acumulaGanadorEquisD1 += 1;
@@ -156,7 +156,7 @@ public class Juego {
             }
         }
 
-        for(int cont=1, cont2=3; cont < 3; cont++, cont2--){ // Para la diagonal de 0.2 - 1.1 - 2.0
+        for(int cont=1, cont2=3; cont < 4; cont++, cont2--){ // Para la diagonal de 0.2 - 1.1 - 2.0
 
             if( getCasillaCirculo(cont2,cont) ){ // Para la diagonal de 0.2 - 1.1 - 2.0
                 acumulaGanadorCirculoD1 += 1;
@@ -182,7 +182,11 @@ public class Juego {
 
     public void imprimirTablero(){
 
+        System.out.println("     [1] [2] [3]");
+
         for(int cont = 0; cont < casillas.length; cont++){
+
+            System.out.print("["+(cont+1)+"] | ");
 
             for(int cont2 = 0; cont2 < casillas.length; cont2++){
 

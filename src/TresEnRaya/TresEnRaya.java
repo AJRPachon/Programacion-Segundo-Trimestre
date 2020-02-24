@@ -15,6 +15,7 @@ Fin
  */
 
 
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class TresEnRaya {
@@ -28,6 +29,9 @@ public class TresEnRaya {
         int posicion1, posicion2;
         boolean ganadorEquis = false;
         boolean ganadorCirculo = false;
+        int ronda = 0;
+
+        objJuego.imprimirTablero();
 
         //Comprobar si la casilla elegida está libre
         do {
@@ -45,8 +49,12 @@ public class TresEnRaya {
                 objJuego.imprimirTablero();
 
             } else {
-                System.out.println("La posición seleccionada ya se encuentra ocupada"); //TODO saber si es una 'X' o 'O'
-
+                while ( objJuego.getCasillaCirculo(posicion1,posicion2) && objJuego.getCasillaEquis(posicion1,posicion2)) {
+                    System.out.println("La posición seleccionada ya se encuentra ocupada"); //TODO saber si es una 'X' o 'O'
+                    System.out.println("Introduzca de nuevo la posición");
+                    posicion1 = teclado.nextInt();
+                    posicion2 = teclado.nextInt();
+                }
             }
 
             //Comprobar ganador
@@ -66,8 +74,12 @@ public class TresEnRaya {
                     objJuego.imprimirTablero();
 
                 } else {
-                    System.out.println("La posición seleccionada ya se encuentra ocupada"); //TODO saber si es una 'X' o 'O'
-
+                    while ( objJuego.getCasillaCirculo(posicion1,posicion2) && objJuego.getCasillaEquis(posicion1,posicion2)) {
+                        System.out.println("La posición seleccionada ya se encuentra ocupada"); //TODO saber si es una 'X' o 'O'
+                        System.out.println("Introduzca de nuevo la posición");
+                        posicion1 = teclado.nextInt();
+                        posicion2 = teclado.nextInt();
+                    }
                 }
 
                 //Comprobar ganador
@@ -76,7 +88,9 @@ public class TresEnRaya {
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-        }while (!ganadorCirculo && !ganadorEquis );
+         ronda++;
+
+        }while (!ganadorCirculo && !ganadorEquis && ronda < 8);
 
         if (ganadorCirculo){
             System.out.println("Enhorabuena! ha ganado circulo");
