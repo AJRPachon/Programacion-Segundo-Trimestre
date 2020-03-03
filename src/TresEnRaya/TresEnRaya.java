@@ -43,54 +43,51 @@ public class TresEnRaya {
             posicion2 = teclado.nextInt();
 
             //Validar que la casilla seleccionada no esté ocupada, en ese caso, marcar la casilla como ocupada
-            if (!objJuego.getCasillaCirculo(posicion1, posicion2) && !objJuego.getCasillaEquis(posicion1, posicion2)) {
-
-                objJuego.setCasillaCirculo(posicion1, posicion2);  //ASIGNAR POSICIÓN CIRCULO
-                objJuego.imprimirTablero();
-
-            } else {
-                while ( objJuego.getCasillaCirculo(posicion1,posicion2) && objJuego.getCasillaEquis(posicion1,posicion2)) {
-                    System.out.println("La posición seleccionada ya se encuentra ocupada"); //TODO saber si es una 'X' o 'O'
+            while ( objJuego.getCasillaCirculo(posicion1,posicion2) || objJuego.getCasillaEquis(posicion1,posicion2)) {
+                    System.out.println("\nLa posición seleccionada ya se encuentra ocupada"); //TODO saber si es una 'X' o 'O'
                     System.out.println("Introduzca de nuevo la posición");
+                    objJuego.imprimirTablero();
                     posicion1 = teclado.nextInt();
                     posicion2 = teclado.nextInt();
+
                 }
-            }
+
+            objJuego.setCasillaCirculo(posicion1, posicion2);  //ASIGNAR POSICIÓN CIRCULO
+            objJuego.imprimirTablero();
 
             //Comprobar ganador
             ganadorCirculo = objJuego.comprobarGanadorCirculo();
 
+        ronda++;
+
 /////////////// SELECCIONAR EQUIS ///////////////////////////////////////////////////////////////////////////////////////
 
-            if (!ganadorCirculo) { //Para que no siga ejecutando si ya hay un ganador circulo
+            if (!ganadorCirculo && ronda < 9) { //Para que no siga ejecutando si ya hay un ganador circulo
                 System.out.println("Elija una posición para la equis");
                 posicion1 = teclado.nextInt();
                 posicion2 = teclado.nextInt();
 
                 //Validar que la casilla seleccionada no esté ocupada, en ese caso, marcar la casilla como ocupada
-                if (!objJuego.getCasillaEquis(posicion1, posicion2) && !objJuego.getCasillaCirculo(posicion1, posicion2)) {
-
-                    objJuego.setCasillaEquis(posicion1, posicion2);  //ASIGNAR POSICIÓN CIRCULO
-                    objJuego.imprimirTablero();
-
-                } else {
-                    while ( objJuego.getCasillaCirculo(posicion1,posicion2) && objJuego.getCasillaEquis(posicion1,posicion2)) {
-                        System.out.println("La posición seleccionada ya se encuentra ocupada"); //TODO saber si es una 'X' o 'O'
+                while ( objJuego.getCasillaCirculo(posicion1,posicion2) || objJuego.getCasillaEquis(posicion1,posicion2)) {
+                        System.out.println("\nLa posición seleccionada ya se encuentra ocupada"); //TODO saber si es una 'X' o 'O'
                         System.out.println("Introduzca de nuevo la posición");
+                        objJuego.imprimirTablero();
                         posicion1 = teclado.nextInt();
                         posicion2 = teclado.nextInt();
                     }
-                }
+
+                objJuego.setCasillaEquis(posicion1, posicion2);  //ASIGNAR POSICIÓN EQUIS
+                objJuego.imprimirTablero();
 
                 //Comprobar ganador
                 ganadorEquis = objJuego.comprobarGanadorEquis();
             }
 
-///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
          ronda++;
 
-        }while (!ganadorCirculo && !ganadorEquis && ronda < 8);
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+        }while (!ganadorCirculo && !ganadorEquis && ronda < 9);
 
         if (ganadorCirculo){
             System.out.println("Enhorabuena! ha ganado circulo");
