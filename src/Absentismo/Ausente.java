@@ -81,6 +81,25 @@ public class Ausente {
 
     }
 
+///////////// IMPRIMIR SEMANA COMPLETA /////////////////////////////////////////////////////////////////////////////////////////
+
+    public void resumenAbsentismo(){
+
+        for(int cont = 0; cont < ausentes.length; cont++){
+
+            System.out.print("Día ["+(cont+1)+"] | ");
+
+            for(int cont2 = 0; cont2 < 7; cont2++){
+
+                getAusentesP(cont,cont2);
+                System.out.print("*");
+
+
+            System.out.println();
+        }
+
+    }
+
 ///////////// TOTAL AUSENTES POR SEMANA POR DEPARTAMENTOS ///////////////////////////////////////////////////////////////////////////////////
 
     public void totalDepartamentoSemana() {

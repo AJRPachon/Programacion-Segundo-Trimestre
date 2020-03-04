@@ -28,29 +28,40 @@ public class Absentismo {
         objAusente.imprimirSemana();
 
         //Saber el numero de ausentes concreto de un departamento
-        System.out.println();
+        System.out.println("\nNumero de ausentes de un departamento concreto");
         System.out.println(objAusente.getAusentesP(p1,p2));
         System.out.println();
 
 
         //b) Total de ausentes por departamento a lo largo de la semana.
+        System.out.println("Total de ausentes por departamento a lo largo de la semana:");
         objAusente.totalDepartamentoSemana();
         System.out.println();
 
 
         //c) Total de ausentes por día de la semana.
+        System.out.println("Total de ausentes por días de la semana:");
         objAusente.totalAusenteDiaSemana();
         System.out.println();
 
 
         //d) Total de ausentes en la empresa durante la semana.
+        System.out.println("Total de ausentes en la empresa durante la semana");
         objAusente.totalAusenteSemana();
         System.out.println();
 
 
         //e) Porcentaje de diferencia (+ 0 - ) de cada departamento respecto a la media semanal.
+        System.out.println("La media semanal de ausentes es de: "+objAusente.mediaSemanal());
+        System.out.println();
         objAusente.porcentajeDiferencia();
         System.out.println();
+
+
+        //f) Resumen del absentismo de toda la compañía representado mediante diagrama de barras usando *,
+        //   señalando porcentajes totales de ausencias ocurrido cada día de la semana
+        //   Para probar, cargar aleatoriamente el array con números de 0 a 5
+        objAusente.resumenAbsentismo();
 
     }
 
