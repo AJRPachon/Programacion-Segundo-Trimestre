@@ -22,17 +22,35 @@ public class Absentismo {
 
         Ausente objAusente = new Ausente();
 
-        int p1 = 2, p2 = 3;
+        int p1 = 2, p2 = 7;
 
         //Imprimir los dias de la semana y el numero de ausentes por día de cada semana y departamentos
         objAusente.imprimirSemana();
 
         //Saber el numero de ausentes concreto de un departamento
+        System.out.println();
         System.out.println(objAusente.getAusentesP(p1,p2));
+        System.out.println();
+
 
         //b) Total de ausentes por departamento a lo largo de la semana.
+        objAusente.totalDepartamentoSemana();
+        System.out.println();
 
 
+        //c) Total de ausentes por día de la semana.
+        objAusente.totalAusenteDiaSemana();
+        System.out.println();
+
+
+        //d) Total de ausentes en la empresa durante la semana.
+        objAusente.totalAusenteSemana();
+        System.out.println();
+
+
+        //e) Porcentaje de diferencia (+ 0 - ) de cada departamento respecto a la media semanal.
+        objAusente.porcentajeDiferencia();
+        System.out.println();
 
     }
 

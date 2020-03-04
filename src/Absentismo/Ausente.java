@@ -21,6 +21,8 @@ import java.util.Random;
 public class Ausente {
 
     private int ausentes[][];
+    private int auDepartamento[];
+    private int acumulaDias=0;
 
     Random rnd = new Random();
 
@@ -62,11 +64,12 @@ public class Ausente {
 
     public void imprimirSemana(){
 
-        System.out.println("     [1] [2] [3] [4] [5] [6] [7]");
+        System.out.println("                 DIAS DE LA SEMANA");
+        System.out.println("           [L] [M] [X] [J] [V] [S] [D]");
 
         for(int cont = 0; cont < ausentes.length; cont++){
 
-            System.out.print("["+(cont+1)+"] | ");
+            System.out.print("Depto ["+(cont+1)+"] | ");
 
             for(int cont2 = 0; cont2 < 7; cont2++){
 
@@ -82,20 +85,117 @@ public class Ausente {
 
     public void totalDepartamentoSemana() {
 
-        int acumulaDias=0;
+        for (int cont = 0; cont < 5; cont++) {
+
+            acumulaDias=0;
+
+            for (int cont2 = 0; cont2 < 7; cont2++) {
+
+                acumulaDias += getAusentesP(cont+1,cont2+1);
+            }
+
+            System.out.println("Departamento "+(cont+1)+": "+acumulaDias);
+
+        }
+
+    }
+
+
+///////////// TOTAL AUSENTE POR DIA DE LA SEMANA/// //////////////////////////////////////////////////////////////////////////////
+
+    public void totalAusenteDiaSemana() {
+
+        for (int cont = 0; cont < 7; cont++) {
+
+            acumulaDias=0;
+
+            for (int cont2 = 0; cont2 < 5; cont2++) {
+
+                acumulaDias += getAusentesP(cont2+1,cont+1);
+            }
+
+            System.out.println("Día "+(cont+1)+": "+acumulaDias);
+
+        }
+
+    }
+
+
+/////////// TOTAL AUSENTES SEMANA ENTERA /////////////////////////////////////////////////////////////////////////////////////////
+
+    public void totalAusenteSemana() {
+
+        acumulaDias = 0;
 
         for (int cont = 0; cont < 5; cont++) {
 
             for (int cont2 = 0; cont2 < 7; cont2++) {
 
-                acumulaDias += getAusentesP(cont,cont2);
+                acumulaDias += getAusentesP(cont+1,cont2+1);
+            }
+        }
+
+        System.out.println("Total de ausentes en la semana : "+acumulaDias);
+
+    }
+
+    public double totalAusenteSemanaReturn() {
+
+        acumulaDias = 0;
+
+        for (int cont = 0; cont < 5; cont++) {
+
+            for (int cont2 = 0; cont2 < 7; cont2++) {
+
+                acumulaDias += getAusentesP(cont+1,cont2+1);
+            }
+        }
+
+        return acumulaDias;
+
+    }
+
+
+/////////// MEDIA SEMANAL ////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    public double mediaSemanal(){
+
+        double mediaSemanal = 0;
+
+        mediaSemanal = totalAusenteSemanaReturn() / 7 ;
+
+        return mediaSemanal;
+
+    }
+
+
+////////// PORCENTAJE DE DIFERENCIA ////////////////////////////////////////////////////////////////////////////////////////////
+
+    public void porcentajeDiferencia() {
+
+        int porcentaje = 0;
+
+        for (int cont = 0; cont < 5; cont++) {
+
+            acumulaDias = 0;
+
+            for (int cont2 = 0; cont2 < 7; cont2++) {
+
+                acumulaDias += getAusentesP(cont + 1, cont2 + 1);
+
             }
 
-            
+            porcentaje = (100 * (acumulaDias - (int)mediaSemanal())) / acumulaDias;
+
+            System.out.println("Porcentaje de diferencia departamento " + (cont + 1) + ": " +porcentaje+"%");
 
         }
 
+
     }
+
+
+
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
