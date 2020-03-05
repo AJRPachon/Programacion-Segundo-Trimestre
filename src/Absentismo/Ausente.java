@@ -81,23 +81,33 @@ public class Ausente {
 
     }
 
-///////////// IMPRIMIR SEMANA COMPLETA /////////////////////////////////////////////////////////////////////////////////////////
+///////////// IMPRIMIR ABSENTISMO /////////////////////////////////////////////////////////////////////////////////////////
 
-    public void resumenAbsentismo(){
+    public void resumenAbsentismo() {
 
-        for(int cont = 0; cont < ausentes.length; cont++){
+        int sumaNum;
 
-            System.out.print("Día ["+(cont+1)+"] | ");
+        for (int cont = 0; cont < 7; cont++) {
 
-            for(int cont2 = 0; cont2 < 7; cont2++){
+            sumaNum = 0;
 
-                getAusentesP(cont,cont2);
+            for (int cont2 = 0; cont2 < 5; cont2++) {
+
+                sumaNum += getAusentesP(cont2+1, cont+1);
+
+            }
+
+            System.out.print("Día de la semana "+(cont+1)+":");
+
+            for (int cont3 = 0; cont3 < sumaNum; cont3++ ){
+
                 System.out.print("*");
 
+            }
 
             System.out.println();
-        }
 
+        }
     }
 
 ///////////// TOTAL AUSENTES POR SEMANA POR DEPARTAMENTOS ///////////////////////////////////////////////////////////////////////////////////
@@ -142,23 +152,7 @@ public class Ausente {
 
 /////////// TOTAL AUSENTES SEMANA ENTERA /////////////////////////////////////////////////////////////////////////////////////////
 
-    public void totalAusenteSemana() {
-
-        acumulaDias = 0;
-
-        for (int cont = 0; cont < 5; cont++) {
-
-            for (int cont2 = 0; cont2 < 7; cont2++) {
-
-                acumulaDias += getAusentesP(cont+1,cont2+1);
-            }
-        }
-
-        System.out.println("Total de ausentes en la semana : "+acumulaDias);
-
-    }
-
-    public double totalAusenteSemanaReturn() {
+    public int totalAusenteSemana() {
 
         acumulaDias = 0;
 
@@ -181,7 +175,7 @@ public class Ausente {
 
         double mediaSemanal = 0;
 
-        mediaSemanal = totalAusenteSemanaReturn() / 7 ;
+        mediaSemanal = (double)totalAusenteSemana() / 7 ;
 
         return mediaSemanal;
 
@@ -212,8 +206,6 @@ public class Ausente {
 
 
     }
-
-
 
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

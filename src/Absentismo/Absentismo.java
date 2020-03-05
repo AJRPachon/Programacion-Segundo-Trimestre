@@ -46,8 +46,7 @@ public class Absentismo {
 
 
         //d) Total de ausentes en la empresa durante la semana.
-        System.out.println("Total de ausentes en la empresa durante la semana");
-        objAusente.totalAusenteSemana();
+        System.out.println("Total de ausentes en la empresa durante la semana :"+objAusente.totalAusenteSemana());
         System.out.println();
 
 
@@ -61,6 +60,7 @@ public class Absentismo {
         //f) Resumen del absentismo de toda la compañía representado mediante diagrama de barras usando *,
         //   señalando porcentajes totales de ausencias ocurrido cada día de la semana
         //   Para probar, cargar aleatoriamente el array con números de 0 a 5
+        System.out.println("Resumen del absentismo semanal representado mediante gráfico");
         objAusente.resumenAbsentismo();
 
     }
