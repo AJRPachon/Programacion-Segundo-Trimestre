@@ -12,8 +12,10 @@ package TresEnRaya2;
 
     METODOS BASICOS:
         getCasillas(p1,p2)
-        setCasillas(p1,p2,v)
+        setCasillas(p1,p2,caracter)
         imprimirTablero()
+        comprobarGanador(caracter)
+        mostrarGanador(caracter)
 
     METODOS AÑADIDOS:
         Ninguna
@@ -53,12 +55,29 @@ public class Juego2 {
         return this.casillas[p1-1][p2-1];
     }
 
-    public void setCasillas(int p1, int p2, char v) {
-        this.casillas[p1-1][p2-1] = v;
+    public void setCasillas(int p1, int p2, char caracter) {
+        this.casillas[p1-1][p2-1] = caracter;
     }
 
 
 ///////////// IMPRIMIR TABLERO //////////////////////////////////////////////////////////////////////////////////////////////
+
+    /*
+        SIGNATURA: public void imprimirTablero()
+
+        COMENTARIO: El metodo tiene que imprimir el tablero (con sus casillas ocupadas o no)
+
+        ENTRADAS: Ninguna
+
+        SALIDAS: Tablero impreso
+
+        ENTRADA/SALIDA: Ninguna
+
+        PRECONDICIONES: Ninguna
+
+        POSTCONDICIONES: Ninguna
+
+     */
 
     public void imprimirTablero(){
 
@@ -81,7 +100,24 @@ public class Juego2 {
 
 ////////////////// COMPROBAR GANADOR  ///////////////////////////////////////////////////////////////////////////////////////
 
-    public boolean comprobarGanador(char v){
+    /*
+        SIGNATURA: public boolean comprobarGanador(char v)
+
+        COMENTARIO: Comprueba si con el último caracter introducido, existe ganador de este mismo
+
+        ENTRADAS: Caracter que queramos comprobar si es el caracter ganador
+
+        SALIDAS: booleano con ganador
+
+        ENTRADA/SALIDA: Ninguna
+
+        PRECONDICIONES: Ninguna
+
+        POSTCONDICIONES: Ninguna
+
+     */
+
+    public boolean comprobarGanador(char caracter){
 
         boolean ganador = false;
         int acumulaGanadorV=0;    //Vertical
@@ -98,11 +134,11 @@ public class Juego2 {
 
                 for (int cont2 = 1; cont2 < this.casillas.length+1; cont2++) { //cont2 recorre las columnas
 
-                    if (getCasillas(cont, cont2) == v ) { //para saber si en esa casilla, en esa posición hay un valor en Horizontal
+                    if (getCasillas(cont, cont2) == caracter ) { //para saber si en esa casilla, en esa posición hay un valor en Horizontal
                         acumulaGanadorH += 1;
                     }
 
-                    if (getCasillas(cont2, cont) == v) { //para saber si en esa casilla, en esa posición hay un valor en Vertical
+                    if (getCasillas(cont2, cont) == caracter) { //para saber si en esa casilla, en esa posición hay un valor en Vertical
                         acumulaGanadorV += 1;
                     }
                 }
@@ -111,11 +147,11 @@ public class Juego2 {
 
         for(int cont=1, cont2=3; cont < 4; cont++, cont2--){ // Para la diagonal de 0.2 - 1.1 - 2.0
 
-            if( getCasillas(cont2,cont) == v ){ // Para la diagonal de 0.2 - 1.1 - 2.0
+            if( getCasillas(cont2,cont) == caracter ){ // Para la diagonal de 0.2 - 1.1 - 2.0
                 acumulaGanadorD1 += 1;
             }
 
-            if ( getCasillas(cont,cont) == v ){ // Para la diagonal sucesiva de 0.0 - 1.1 - 2.2
+            if ( getCasillas(cont,cont) == caracter ){ // Para la diagonal sucesiva de 0.0 - 1.1 - 2.2
                 acumulaGanadorD2 += 1;
             }
 
@@ -129,6 +165,36 @@ public class Juego2 {
         return ganador;
     }
 
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    /*
+        SIGNATURA: public void mostrarGanador(char caracter)
+
+        COMENTARIO: Muestra por pantalla el ganador del juego o empate
+
+        ENTRADAS: Caracter que queramos imprimir como ganador
+
+        SALIDAS: Ninguna
+
+        ENTRADA/SALIDA: Ninguna
+
+        PRECONDICIONES: Ninguna
+
+        POSTCONDICIONES: Ninguna
+
+     */
+
+    //Mostrar ganador
+    public void mostrarGanador(char caracter){
+
+        if (comprobarGanador(caracter)){
+            System.out.println("Enhorabuena! ha ganado "+caracter);
+        }else{
+            System.out.println("Empate");
+        }
+
+    }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
