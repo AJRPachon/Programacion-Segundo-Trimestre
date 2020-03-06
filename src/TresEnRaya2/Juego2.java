@@ -1,4 +1,4 @@
-package TresEnRaya;
+package TresEnRaya2;
 
 /*
     PROPIEDADES BASICAS:
@@ -16,9 +16,11 @@ package TresEnRaya;
         imprimirTablero()
 
     METODOS AÑADIDOS:
-
+        Ninguna
 
  */
+
+import java.util.Scanner;
 
 public class Juego2 {
 
@@ -126,6 +128,7 @@ public class Juego2 {
 
         return ganador;
     }
+
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 

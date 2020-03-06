@@ -1,4 +1,4 @@
-package TresEnRaya;
+package TresEnRaya2;
 /*
     ANALISIS:
     
@@ -22,6 +22,7 @@ public class TresEnRaya2 {
         Scanner teclado = new Scanner(System.in);
 
         Juego2 objJuego2 = new Juego2();
+        Gestora gestora = new Gestora();
 
         int posicion1, posicion2;
         boolean ganador = false;
@@ -36,11 +37,7 @@ public class TresEnRaya2 {
 ////////////// REALIZAR JUGADA ///////////////////////////////////////////////////////////////////////////////////////
 
             //Para saber qué caracter toca en cada turno
-            if ( ronda % 2 != 0 ){
-                caracter = 'X';
-            }else{
-                caracter = 'O';
-            }
+            caracter = gestora.turno(caracter,ronda);
 
             System.out.println("Elija una posición para "+caracter);
             posicion1 = teclado.nextInt();
@@ -48,15 +45,15 @@ public class TresEnRaya2 {
 
             //Validar que la casilla seleccionada no esté ocupada, en ese caso, marcar la casilla como ocupada
             while ( objJuego2.getCasillas(posicion1,posicion2) != ' ') {
-                System.out.println("\nLa posición seleccionada ya se encuentra ocupada por la ficha "+objJuego2.getCasillas(posicion1,posicion2)); //TODO saber si es una 'X' o 'O'
+                System.out.println("\nLa posición seleccionada ya se encuentra ocupada por la ficha " + objJuego2.getCasillas(posicion1,posicion2)); //TODO saber si es una 'X' o 'O'
                 System.out.println("Introduzca de nuevo la posición");
                 objJuego2.imprimirTablero();
                 posicion1 = teclado.nextInt();
                 posicion2 = teclado.nextInt();
-
             }
 
-            objJuego2.setCasillas(posicion1, posicion2, caracter );  //ASIGNAR POSICIÓN CIRCULO
+            //ASIGNAR POSICIÓN CARACTER
+            objJuego2.setCasillas(posicion1, posicion2, caracter );
             objJuego2.imprimirTablero();
 
             //Comprobar ganador
