@@ -34,7 +34,7 @@ public class Juego2 {
 
             for(int cont2 = 0; cont2 < casillas.length; cont2++) {
                 casillas[cont][cont2] = ' '; //Para ponerle un valor por defecto (Lo he inicializado)
-            }                               //Se pone Casilla() porque es el constructor del objeto
+            }
         }
 
     }
@@ -43,6 +43,7 @@ public class Juego2 {
 
         this.casillas = casillas;
     }
+
 
 ////////// GETTERS Y SETTERS CASILLAS ////////////////////////////////////////////////////////////////////////////////////////
 
@@ -54,7 +55,8 @@ public class Juego2 {
         this.casillas[p1-1][p2-1] = v;
     }
 
-////////// IMPRIMIR TABLERO ////////////////////////////////////////////////////////////////////////////////////////////////
+
+///////////// IMPRIMIR TABLERO //////////////////////////////////////////////////////////////////////////////////////////////
 
     public void imprimirTablero(){
 
@@ -74,7 +76,8 @@ public class Juego2 {
 
     }
 
-//////////////////// COMPROBAR GANADOR CIRCULO /////////////////////////////////////////////////////////////////////////////////
+
+////////////////// COMPROBAR GANADOR  ///////////////////////////////////////////////////////////////////////////////////////
 
     public boolean comprobarGanador(char v){
 
@@ -89,15 +92,15 @@ public class Juego2 {
             if( acumulaGanadorV !=3 && acumulaGanadorH != 3 ) { // para si llega a 3, que deje de contar
 
                 acumulaGanadorV=0; //Pongo estas variables a 0 para que cuando cambie el cont1 de valor, vuelvan a estar a 0, si no daría un ganador antes de tiempo
-                acumulaGanadorH=0;
+                acumulaGanadorH=0; //
 
                 for (int cont2 = 1; cont2 < this.casillas.length+1; cont2++) { //cont2 recorre las columnas
 
-                    if (getCasillas(cont, cont2) == v ) { //para saber si en esa casilla, en esa posición hay una Equis en Horizontal
+                    if (getCasillas(cont, cont2) == v ) { //para saber si en esa casilla, en esa posición hay un valor en Horizontal
                         acumulaGanadorH += 1;
                     }
 
-                    if (getCasillas(cont2, cont) == v) { //para saber si en esa casilla, en esa posición hay una Equis en Vertical
+                    if (getCasillas(cont2, cont) == v) { //para saber si en esa casilla, en esa posición hay un valor en Vertical
                         acumulaGanadorV += 1;
                     }
                 }
@@ -116,8 +119,8 @@ public class Juego2 {
 
         }
 
-
-        if ( acumulaGanadorV == 3 || acumulaGanadorH == 3 || acumulaGanadorD1 == 3 || acumulaGanadorD2 ==3 ) {  //Para saber si ha ganado
+        //Para saber si ha ganado
+        if ( acumulaGanadorV == 3 || acumulaGanadorH == 3 || acumulaGanadorD1 == 3 || acumulaGanadorD2 ==3 ) {
             ganador = true;
         }
 
