@@ -20,8 +20,7 @@ import java.util.Random;
 
 public class Ausente {
 
-    private int ausentes[][];
-    private int auDepartamento[];
+    private int[][] ausentes;
     private int acumulaDias=0;
 
     Random rnd = new Random();
@@ -39,7 +38,7 @@ public class Ausente {
         }
     }
 
-    public Ausente( int ausente[][]){  //Constructor con parametros
+    public Ausente(int[][] ausente){  //Constructor con parametros
 
         this.ausentes = ausente;
 
@@ -173,7 +172,7 @@ public class Ausente {
 
     public double mediaSemanal(){
 
-        double mediaSemanal = 0;
+        double mediaSemanal;
 
         mediaSemanal = (double)totalAusenteSemana() / 7 ;
 
@@ -186,7 +185,7 @@ public class Ausente {
 
     public void porcentajeDiferencia() {
 
-        int porcentaje = 0;
+        int porcentaje;
 
         for (int cont = 0; cont < 5; cont++) {
 
