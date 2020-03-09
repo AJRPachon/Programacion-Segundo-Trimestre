@@ -238,7 +238,7 @@ public class Ausente {
 
         ENTRADAS: Ninguna
 
-        SALIDAS: 
+        SALIDAS:
 
         ENTRADA/SALIDA: Ninguna
 
