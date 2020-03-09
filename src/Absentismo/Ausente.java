@@ -61,6 +61,23 @@ public class Ausente {
 
 ///////////// IMPRIMIR SEMANA COMPLETA /////////////////////////////////////////////////////////////////////////////////////////
 
+    /*
+        SIGNATURA: public void imprimirSemana()
+
+        COMENTARIO: El metodo imprime los dias de la semana y los departamentos que hay, con la cantidad de ausentes por día y departamento
+
+        ENTRADAS: Ninguna
+
+        SALIDAS: Semana impresa
+
+        ENTRADA/SALIDA: Ninguna
+
+        PRECONDICIONES: El array de ausentes tiene que estar cargado con el numero de ausentes antes de poder imprimirlo
+
+        POSTCONDICIONES: Semana impresa
+
+     */
+
     public void imprimirSemana(){
 
         System.out.println("                 DIAS DE LA SEMANA");
@@ -82,28 +99,50 @@ public class Ausente {
 
 ///////////// IMPRIMIR ABSENTISMO /////////////////////////////////////////////////////////////////////////////////////////
 
+    /*
+        SIGNATURA: public void resumenAbsentismo()
+
+        COMENTARIO: El metodo tiene que imprimir el tablero (con sus casillas ocupadas o no)
+
+        ENTRADAS: Ninguna
+
+        SALIDAS: ( Por pantalla ) Gráfico en forma de barras "*"
+
+        ENTRADA/SALIDA: Ninguna
+
+        PRECONDICIONES: Ninguna
+
+        POSTCONDICIONES: Ninguna
+
+     */
+
     public void resumenAbsentismo() {
 
         int sumaNum;
 
+        //Vale para ir contando los dias de la semana
         for (int cont = 0; cont < 7; cont++) {
 
             sumaNum = 0;
 
+            //Cuenta el numero de ausentes total por día
             for (int cont2 = 0; cont2 < 5; cont2++) {
 
                 sumaNum += getAusentesP(cont2+1, cont+1);
 
             }
 
-            System.out.print("Día de la semana "+(cont+1)+":");
+            //Asigna valor de cada dia de la semana
+            System.out.print(Enum.values()[cont]+": ");
 
+            //Imprime la cantidad de ausentes en forma de *
             for (int cont3 = 0; cont3 < sumaNum; cont3++ ){
 
                 System.out.print("*");
 
             }
 
+            //Salto de linea para cada dia de la semana
             System.out.println();
 
         }
@@ -111,17 +150,38 @@ public class Ausente {
 
 ///////////// TOTAL AUSENTES POR SEMANA POR DEPARTAMENTOS ///////////////////////////////////////////////////////////////////////////////////
 
+    /*
+        SIGNATURA: public void totalDepartamentoSemana()
+
+        COMENTARIO: Cuenta e imprime la cantidad de ausentes por departamento que ha habido en una semana
+
+        ENTRADAS: Ninguna
+
+        SALIDAS: ( Por pantalla ) Numero total de ausentes por departamento
+
+        ENTRADA/SALIDA: Ninguna
+
+        PRECONDICIONES: Ninguna
+
+        POSTCONDICIONES: Ninguna
+
+     */
+
     public void totalDepartamentoSemana() {
 
+        //Cuenta los departamentos
         for (int cont = 0; cont < 5; cont++) {
 
             acumulaDias=0;
 
+            //Cuenta los dias de la semana
             for (int cont2 = 0; cont2 < 7; cont2++) {
 
+                //Acumula la cantidad total de ausentes
                 acumulaDias += getAusentesP(cont+1,cont2+1);
             }
 
+            //Imprime la cantidad de ausentes que ha habido en una semana en cada departamento
             System.out.println("Departamento "+(cont+1)+": "+acumulaDias);
 
         }
@@ -131,18 +191,38 @@ public class Ausente {
 
 ///////////// TOTAL AUSENTE POR DIA DE LA SEMANA/// //////////////////////////////////////////////////////////////////////////////
 
+    /*
+        SIGNATURA: public void totalAusenteDiaSemana()
+
+        COMENTARIO: Cuenta e imprime la cantidad de ausentes por departamento que ha habido en una semana
+
+        ENTRADAS: Ninguna
+
+        SALIDAS: ( Por pantalla ) Numero total de ausentes por dia de la semana
+
+        ENTRADA/SALIDA: Ninguna
+
+        PRECONDICIONES: Ninguna
+
+        POSTCONDICIONES: Ninguna
+
+     */
+
     public void totalAusenteDiaSemana() {
 
+        //Dias de la semana
         for (int cont = 0; cont < 7; cont++) {
 
             acumulaDias=0;
 
+            //Departamentos
             for (int cont2 = 0; cont2 < 5; cont2++) {
 
                 acumulaDias += getAusentesP(cont2+1,cont+1);
             }
 
-            System.out.println("Día "+(cont+1)+": "+acumulaDias);
+            //Muestra los ausentes por dia de la semana
+            System.out.println(Enum.values()[cont]+": "+acumulaDias);
 
         }
 
@@ -150,6 +230,23 @@ public class Ausente {
 
 
 /////////// TOTAL AUSENTES SEMANA ENTERA /////////////////////////////////////////////////////////////////////////////////////////
+
+    /*
+        SIGNATURA: public void totalAusenteSemana()
+
+        COMENTARIO:
+
+        ENTRADAS: Ninguna
+
+        SALIDAS: 
+
+        ENTRADA/SALIDA: Ninguna
+
+        PRECONDICIONES: Ninguna
+
+        POSTCONDICIONES: Ninguna
+
+     */
 
     public int totalAusenteSemana() {
 
