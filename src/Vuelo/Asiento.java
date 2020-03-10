@@ -5,7 +5,6 @@ package Vuelo;
     PROPIEDADES BASICAS:
         int fumadores
         int normales
-        int asientos[]
 
 
     PROPIEDADES DERIVADAS:
