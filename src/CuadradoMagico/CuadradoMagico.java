@@ -25,9 +25,102 @@ package CuadradoMagico;
 
  */
 
+/*
+
+    Cagar el array con ceros para poder compararlo a la hora de añadir numeros
+
+    p2 = array.length / 2
+    club[0][p2]  //aquí es donde tienen que empezar todos los cuadrados mágicos ( empiezan por el 1 )
+
+    setNumero(int 0,int p2) para añadir el 1 siempre
+
+    fila = 0
+    columna = p2
+
+    numInsertado++
+
+    REPETIR
+
+        Si ( club[fila-1][columna-1] != 0 ) fila = fila+1 //Para saber si la siguiente posición está ocupada
+        SiNo
+            fila-- columna--
+        FinSi
+
+        Si ( fila < 0 || fila > array.length-1 ) fila == array.length-1
+        Si ( columna < 0 || columna > array.length-1 ) columna == array.length-1 //Para cuando lleguen a 0, que vuelvan a la posición inicial
+
+        setNumero(fila, columna) //Para darle valor a la casilla
+
+        numInsertado++
+
+    MIENTRAS ( numInsertado < array.length )
+
+
+
+ */
+
 public class CuadradoMagico {
 
+    public static void main(String[] args){
 
+        int fila = 3;
+        int columna = 3;
+        int p2; //columna de la matriz
+        int p1 = 0; //fila de la matriz
+        int numInsertado = 1; //Numero que va a ir incrementando en la matriz
+        int p1Ant, p2Ant;
+
+        Matriz cuadrado = new Matriz(fila, columna);
+
+        //Saber cuál es el punto medio del cuadrado
+        p2 = cuadrado.getCuadrado().length / 2;
+
+        //Insertar el 1 en la matriz
+        cuadrado.setPosicionCuadrado(p1, p2, numInsertado);
+        numInsertado = 2; //Para cuando empiece la matriz, empiece en 2
+
+        do { //REPETIR
+
+            //Auxiliares para cuando la casilla siguiente esté ocupada, coja los valores anteriores y sólo haya que restarle 1 a la columna
+            p1Ant = p1;
+            p2Ant = p2;
+
+            //En cada iteración, se disminuyen los valores
+            p1--;
+            p2--;
+
+
+            //Para cuando fila llegue a 0, que vuelvan a la posición inicial
+            if ( p1 < 0 ){ //|| p1 > cuadrado.getCuadrado().length - 1
+
+                p1 = cuadrado.getCuadrado().length - 1;
+            }
+
+            //Para cuando columna llegue a 0, que vuelvan a la posición inicial
+            if ( p2 < 0 ){ //|| p2 > cuadrado.getCuadrado().length -1
+
+                p2 = cuadrado.getCuadrado().length - 1;
+            }
+
+            //Saber si la siguiente posición está ocupada
+            if ( cuadrado.getPosicionCuadrado(p1,p2) != 0 ) {
+                p1 = p1Ant+1;
+                p2 = p2Ant;
+            }
+
+            //Darle valor a la casilla
+            cuadrado.setPosicionCuadrado(p1, p2, numInsertado);
+
+            numInsertado++;
+
+        }while ( numInsertado <= (cuadrado.getCuadrado().length * cuadrado.getCuadrado().length )  );
+
+
+        //Imprimir resultado cuadrado mágico
+        cuadrado.imprimirCuadradoMagico();
+
+
+    }
 
 
 }
