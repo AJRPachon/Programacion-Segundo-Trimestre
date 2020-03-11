@@ -26,4 +26,8 @@ package CuadradoMagico;
  */
 
 public class CuadradoMagico {
+
+
+
+
 }
