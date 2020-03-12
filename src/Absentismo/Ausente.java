@@ -252,9 +252,9 @@ public class Ausente {
 
         acumulaDias = 0;
 
-        for (int cont = 0; cont < 5; cont++) {
+        for (int cont = 0; cont < 5; cont++) { //Filas
 
-            for (int cont2 = 0; cont2 < 7; cont2++) {
+            for (int cont2 = 0; cont2 < 7; cont2++) {  //Columnas
 
                 acumulaDias += getAusentesP(cont+1,cont2+1);
             }
