@@ -1,4 +1,4 @@
-/*
+package Otros;/*
 
     PROPIEDADES BASICAS
         dia int consultable

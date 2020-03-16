@@ -1,4 +1,4 @@
-
+package Otros;
 /*
 
  Rectángulo. Un rectángulo tiene lados y estamos interesados en su área y su perímetro.
