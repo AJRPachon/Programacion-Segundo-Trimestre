@@ -1,6 +1,7 @@
 package Bolera;
 
 /*
+
     8. En una bolera de 12 pistas se celebra una competición de bolos.
 
     En dicha competición participan 4 jugadores por pista, y para cada uno de ellos se almacena su nombre y las puntuaciones de cada partida.
@@ -17,7 +18,7 @@ package Bolera;
     ANALISIS:
 
     PROPIEDADES BASICAS:
-        Nombre
+        int [][] pistaJugadores consultable ( filas: 4 jugadores(clase Jugador)  ··  columnas: 12 pistas )
 
     PROPIEDADES DERIVADAS:
         Ninguna
@@ -26,8 +27,14 @@ package Bolera;
 
     INTERFAZ
     METODOS BASICOS:
+        getPistaJugadores()
+
 
     METODOS AÑADIDOS:
+        //Patrón de legación
+        getJugaNombre()
+        getJugaPuntuacion()
+        setJugaPuntuacion()
 
 
  */

@@ -4,7 +4,9 @@ package Bolera;
     ANALISIS:
 
     PROPIEDADES BASICAS:
-        Nombre
+        String Nombre consultable
+        int puntuacion consultable y modificable
+
 
     PROPIEDADES DERIVADAS:
         Ninguna
@@ -13,6 +15,10 @@ package Bolera;
 
     INTERFAZ
     METODOS BASICOS:
+        getNombre()
+
+        getPuntuacion()
+        setPuntuacion()
 
     METODOS AÑADIDOS:
 
