@@ -119,7 +119,7 @@ public class Partida {
 
 /*
     SIGNATURA:
-        publid int calcularGanador()
+        public int calcularGanador()
 
     COMENTARIO:
         Calcula cual Jugador ha ganado( puntuación más alta ), devuelve la posición del array en la que se encuentre el ganador ( Clase Jugador )
@@ -127,14 +127,15 @@ public class Partida {
     ENTRADAS:
 
     SALIDAS:
+        Entero con la posición del array del ganador de la partida
 
     ENTRADA/SALIDA:
 
     PRECONDICIONES:
-        Se han debido de jugar todas las partidas
+        Se ha debido de jugar la partida de la cual queremos calcular el ganador
 
     POSTCONDICIONES:
-        Devolverá el ganador de esa pista
+        Devolverá el ganador de esa partida
 
  */
 
