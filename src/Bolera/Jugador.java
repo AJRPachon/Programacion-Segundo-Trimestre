@@ -2,6 +2,7 @@ package Bolera;
 
 /*
     ANALISIS:
+        Esta clase va a controlar el nombre y la puntuación de los jugadores
 
     PROPIEDADES BASICAS:
         String Nombre consultable

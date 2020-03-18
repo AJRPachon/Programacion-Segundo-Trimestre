@@ -12,13 +12,13 @@ package Bolera;
      junto con los nombres de los ganadores.
 
 
- */
+*/
 
 /*
     ANALISIS:
 
     PROPIEDADES BASICAS:
-        int [][] pistaJugadores consultable ( filas: 4 jugadores(clase Jugador)  ··  columnas: 12 pistas )
+        int [][] pistaPartida consultable ( filas: Partida(clase Partida(Pedir el numero de partidas en el main))  ··  columnas: 12 pistas )
 
     PROPIEDADES DERIVADAS:
         Ninguna
@@ -31,14 +31,11 @@ package Bolera;
 
 
     METODOS AÑADIDOS:
-        //Patrón de legación
-        getJugaNombre()
-        getJugaPuntuacion()
-        setJugaPuntuacion()
+        jugarPartida(int numPartidas)  ··  ( carga el array de partidas ( Clase Partida ) )
 
 
- */
+*/
 
-public class Bolera {
+public class Pista {
 
 }
