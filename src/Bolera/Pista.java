@@ -18,10 +18,12 @@ package Bolera;
     ANALISIS:
 
     PROPIEDADES BASICAS:
-        int [][] pistaPartida consultable ( filas: Partida(clase Partida(Pedir el numero de partidas en el main))  ··  columnas: 12 pistas )
+        Jugador [cantJuga] numJugador consultable ( cantJuga en este caso es 4 )
+        int IDPista consultable ( propiedad compartida (static) )
+
 
     PROPIEDADES DERIVADAS:
-        Ninguna
+        int puntMaximaPista consultable
 
 
 
@@ -30,12 +32,99 @@ package Bolera;
         getPistaJugadores()
 
 
+        //Patron delegacion
+            getJugadorNombre()
+
+            getJugadorPuntuacion()
+            setJugadorPuntuacion()
+
+            getJugadorID()
+
+
     METODOS AÑADIDOS:
-        jugarPartida(int numPartidas)  ··  ( carga el array de partidas ( Clase Partida ) )
+        mostrarPuntuacionFinal() ·· ( Puntuación de cada jugador )
+        maxPuntuacionPista()  ·· ( Muestra la máxima puntuación + nombre ganador )
+        generarPuntuacionJugadores()  ··  ( Genera una puntuación para cada uno de los jugadores ( del 0 al 300 ) )
 
 
 */
 
 public class Pista {
+
+
+
+///////// MOSTRAR PUNTUACION FINAL ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+/*
+    SIGNATURA:
+         public void mostrarPuntuacionFinal()
+
+    COMENTARIO:
+        Puntuación de cada jugador en cada pista impresa por pantalla
+
+    ENTRADAS:
+
+    SALIDAS:
+
+    ENTRADA/SALIDA:
+
+    PRECONDICIONES:
+        Se han debido de jugar todas las partidas
+
+    POSTCONDICIONES:
+        Mostrara las puntuaciones de los jugadores impresa por pantalla
+
+ */
+
+
+///////// MAXIMA PUNTUACION PISTA /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+/*
+    SIGNATURA:
+        public void maxPuntuacionPista()
+
+    COMENTARIO:
+        Muestra la máxima puntuación por pista + nombre ganador ( calcular ganador )
+
+    ENTRADAS:
+
+    SALIDAS:
+
+    ENTRADA/SALIDA:
+
+    PRECONDICIONES:
+        Se han debido de jugar todas las partidas
+
+    POSTCONDICIONES:
+        Debe mostrar el nombre del ganador (puntuación más alta ( calcularGanador ) )
+
+ */
+
+
+///////// GENERAR PUNTUACION JUGADORES ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+/*
+    SIGNATURA:
+        public void generarPuntuacionJugadores()
+
+    COMENTARIO:
+        Genera una puntuación para cada uno de los jugadores ( del 0 al 300 )
+
+    ENTRADAS:
+
+    SALIDAS:
+
+    ENTRADA/SALIDA:
+
+    PRECONDICIONES:
+        El array partidaJugador debe contener el numero total de partidas y deben de haberse creado los jugadores
+
+    POSTCONDICIONES:
+        El array partidaJugador debe contendrá las puntuaciones correspondientes a cada jugador
+ */
+
+///////// METODOS OVERRIDE ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 }

@@ -7,6 +7,8 @@ package Bolera;
     PROPIEDADES BASICAS:
         String Nombre consultable
         int puntuacion consultable y modificable
+        int IDJugador consultable ( propiedad compartida (static) )
+        int incrementoID consultable
 
 
     PROPIEDADES DERIVADAS:
@@ -21,6 +23,8 @@ package Bolera;
         getPuntuacion()
         setPuntuacion()
 
+        getIDJugador
+
     METODOS AÑADIDOS:
 
  */
@@ -30,6 +34,8 @@ public class Jugador {
 
     private String nombre;
     private int puntuacion;
+    private int IDJugador;
+    private static int incrementoID = 0;
 
 
 ////////// CONSTRUCTORES //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -39,6 +45,7 @@ public class Jugador {
 
         this.nombre = " ";
         this.puntuacion = 0;
+        this.IDJugador = ++incrementoID;
 
     }
 
@@ -49,6 +56,7 @@ public class Jugador {
 
         this.nombre = nombre;
         this.puntuacion = puntuacion;
+        this.IDJugador = ++incrementoID;
 
     }
 
@@ -64,11 +72,17 @@ public class Jugador {
         return this.puntuacion;
     }
 
+    public int getIncrementoID(){
+
+        return incrementoID;
+    }
+
     public void setPuntuacion(int valor){
 
         this.puntuacion = valor;
     }
 
+///////// METODOS OVERRIDE ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
