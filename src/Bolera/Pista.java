@@ -16,6 +16,8 @@ package Bolera;
 
 /*
     ANALISIS:
+        Esta clase contiene un array con el numero de jugadores (en este caso 4) por pista
+        Gestionará quién es el ganador, puntuación máxima
 
     PROPIEDADES BASICAS:
         Jugador [cantJuga] numJugador consultable ( cantJuga en este caso es 4 )
@@ -42,7 +44,7 @@ package Bolera;
 
 
     METODOS AÑADIDOS:
-        mostrarPuntuacionFinal() ·· ( Puntuación de cada jugador )
+        mostrarPuntuacionPista() ·· ( Puntuación de cada jugador )
         maxPuntuacionPista()  ·· ( Muestra la máxima puntuación + nombre ganador )
         generarPuntuacionJugadores()  ··  ( Genera una puntuación para cada uno de los jugadores ( del 0 al 300 ) )
 
@@ -57,10 +59,10 @@ public class Pista {
 
 /*
     SIGNATURA:
-         public void mostrarPuntuacionFinal()
+         public void mostrarPuntuacionPista()
 
     COMENTARIO:
-        Puntuación de cada jugador en cada pista impresa por pantalla
+        Puntuación de cada jugador impresa por pantalla
 
     ENTRADAS:
 
@@ -69,7 +71,7 @@ public class Pista {
     ENTRADA/SALIDA:
 
     PRECONDICIONES:
-        Se han debido de jugar todas las partidas
+        Se ha debido de jugar al menos 1 partida
 
     POSTCONDICIONES:
         Mostrara las puntuaciones de los jugadores impresa por pantalla
@@ -117,10 +119,10 @@ public class Pista {
     ENTRADA/SALIDA:
 
     PRECONDICIONES:
-        El array partidaJugador debe contener el numero total de partidas y deben de haberse creado los jugadores
+        Deben de haberse creado los jugadores
 
     POSTCONDICIONES:
-        El array partidaJugador debe contendrá las puntuaciones correspondientes a cada jugador
+        Los jugadores deben tener una puntuación ( del 0 al 300 )
  */
 
 ///////// METODOS OVERRIDE ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
