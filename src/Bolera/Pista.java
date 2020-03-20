@@ -6,10 +6,10 @@ package Bolera;
 
     En dicha competición participan 4 jugadores por pista, y para cada uno de ellos se almacena su nombre y las puntuaciones de cada partida.
 
-     Implementar un programa para gestionar esta competición.
+    Implementar un programa para gestionar esta competición.
 
-     Se desea ver en pantalla todos los datos de la competición, la puntuación final de cada partida en cada pista, la máxima puntuación de cada pista
-     junto con los nombres de los ganadores.
+    Se desea ver en pantalla todos los datos de la competición, la puntuación final de cada partida en cada pista, la máxima puntuación de cada pista
+    junto con los nombres de los ganadores.
 
 
 */
@@ -21,7 +21,8 @@ package Bolera;
 
     PROPIEDADES BASICAS:
         Jugador [cantJuga] numJugador consultable ( cantJuga en este caso es 4 )
-        int IDPista consultable ( propiedad compartida (static) )
+        int IDPista consultable
+        int incrementoIDP consultable ( propiedad compartida (static) )
 
 
     PROPIEDADES DERIVADAS:
@@ -31,8 +32,8 @@ package Bolera;
 
     INTERFAZ
     METODOS BASICOS:
-        getNumJugador()
-        get IDPista()
+        getJugadores()
+        getIDPista()
 
 
         //Patron delegacion
@@ -55,7 +56,7 @@ package Bolera;
 
 public class Pista {
 
-    private Jugador[] numJugador;
+    private Jugador[] jugadores;
     private int IDPista;
     private static int incrementoIDP = 0;
 
@@ -68,7 +69,7 @@ public class Pista {
     //Constructor sin parametros
     public Pista(){
 
-        this.numJugador = new Jugador[1];
+        this.jugadores = new Jugador[1];
         this.IDPista = ++incrementoIDP;
 
     }
@@ -76,7 +77,7 @@ public class Pista {
     //Constructor con parametros
     public Pista(int cantJuga){
 
-        this.numJugador = new Jugador[cantJuga];
+        this.jugadores = new Jugador[cantJuga];
         this.IDPista = ++incrementoIDP;
 
     }
@@ -84,12 +85,12 @@ public class Pista {
 ///////// GETTERS Y SETTERS ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     //Metodos Basicos
-    public Jugador[] getNumJugador() {
-        return numJugador;
+    public Jugador[] getJugadores() {
+        return this.jugadores;
     }
 
     public int getIDPista() {
-        return IDPista;
+        return this.IDPista;
     }
 
 
@@ -192,7 +193,7 @@ public class Pista {
 /*
 
     SIGNATURA:
-        public void crearJugadores(¿nombre?)
+        public void crearJugadores()
 
     COMENTARIO:
         Añade el nombre y la puntuación(0) a nuestro array numJugador
@@ -205,7 +206,7 @@ public class Pista {
     ENTRADA/SALIDA:
 
     PRECONDICIONES:
-        Debe de haberse inicializado el array numJugador
+        Debe de haberse inicializado el array jugadores
 
     POSTCONDICIONES:
         Jugadores con nombres, IDs únicos y puntuaciones(en este caso 0)
