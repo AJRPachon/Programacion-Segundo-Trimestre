@@ -172,7 +172,6 @@ public class Pista {
         Genera una puntuación para cada uno de los jugadores ( del 0 al 300 )
 
     ENTRADAS:
-        Nombre ( proviene del Enum )
 
     SALIDAS:
 
@@ -183,6 +182,7 @@ public class Pista {
 
     POSTCONDICIONES:
         Los jugadores deben tener una puntuación ( del 0 al 300 )
+
  */
 
 
@@ -190,13 +190,15 @@ public class Pista {
 
 
 /*
+
     SIGNATURA:
-        public void crearJugadores()
+        public void crearJugadores(¿nombre?)
 
     COMENTARIO:
         Añade el nombre y la puntuación(0) a nuestro array numJugador
 
     ENTRADAS:
+        nombre ( proviene del Enum )
 
     SALIDAS:
 
