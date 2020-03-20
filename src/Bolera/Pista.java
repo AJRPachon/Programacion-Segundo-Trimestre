@@ -31,7 +31,8 @@ package Bolera;
 
     INTERFAZ
     METODOS BASICOS:
-        getPistaJugadores()
+        getNumJugador()
+        get IDPista()
 
 
         //Patron delegacion
@@ -44,6 +45,7 @@ package Bolera;
 
 
     METODOS AÑADIDOS:
+        crearJugadores() ·· ( Añade el nombre y la puntuación(0) a nuestro array numJugador )
         mostrarPuntuacionPista() ·· ( Puntuación de cada jugador )
         maxPuntuacionPista()  ·· ( Muestra la máxima puntuación + nombre ganador )
         generarPuntuacionJugadores()  ··  ( Genera una puntuación para cada uno de los jugadores ( del 0 al 300 ) )
@@ -52,6 +54,63 @@ package Bolera;
 */
 
 public class Pista {
+
+    private Jugador[] numJugador;
+    private int IDPista;
+    private static int incrementoIDP = 0;
+
+    private Jugador nombre;
+    private Jugador puntuacion;
+    private Jugador IDJugador;
+
+////////// CONSTRUCTORES //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    //Constructor sin parametros
+    public Pista(){
+
+        this.numJugador = new Jugador[1];
+        this.IDPista = ++incrementoIDP;
+
+    }
+
+    //Constructor con parametros
+    public Pista(int cantJuga){
+
+        this.numJugador = new Jugador[cantJuga];
+        this.IDPista = ++incrementoIDP;
+
+    }
+
+///////// GETTERS Y SETTERS ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    //Metodos Basicos
+    public Jugador[] getNumJugador() {
+        return numJugador;
+    }
+
+    public int getIDPista() {
+        return IDPista;
+    }
+
+
+    //·······························//
+
+    //Metodos clase Jugador
+    public String getJugadorNombre() {
+        return this.nombre.getNombre();
+    }
+
+    public int getJugadorPuntuacion() {
+        return this.puntuacion.getPuntuacion();
+    }
+
+    public void setJugadorPuntuacion(int valor) {
+        this.puntuacion.setPuntuacion(valor);
+    }
+
+    public int getJugadorIDJugador() {
+        return this.IDJugador.getIDJugador();
+    }
 
 
 
@@ -113,6 +172,7 @@ public class Pista {
         Genera una puntuación para cada uno de los jugadores ( del 0 al 300 )
 
     ENTRADAS:
+        Nombre ( proviene del Enum )
 
     SALIDAS:
 
@@ -124,6 +184,32 @@ public class Pista {
     POSTCONDICIONES:
         Los jugadores deben tener una puntuación ( del 0 al 300 )
  */
+
+
+///////// CREAR JUGADORES ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+/*
+    SIGNATURA:
+        public void crearJugadores()
+
+    COMENTARIO:
+        Añade el nombre y la puntuación(0) a nuestro array numJugador
+
+    ENTRADAS:
+
+    SALIDAS:
+
+    ENTRADA/SALIDA:
+
+    PRECONDICIONES:
+        Debe de haberse inicializado el array numJugador
+
+    POSTCONDICIONES:
+        Jugadores con nombres, IDs únicos y puntuaciones(en este caso 0)
+
+ */
+
 
 ///////// METODOS OVERRIDE ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 

@@ -72,9 +72,9 @@ public class Jugador {
         return this.puntuacion;
     }
 
-    public int getIncrementoID(){
+    public int getIDJugador(){
 
-        return incrementoID;
+        return this.IDJugador;
     }
 
     public void setPuntuacion(int valor){
