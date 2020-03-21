@@ -54,6 +54,8 @@ package Bolera;
 
 */
 
+import java.util.Random;
+
 public class Pista {
 
     private Jugador[] jugadores;
@@ -138,6 +140,16 @@ public class Pista {
 
  */
 
+    public void mostrarPuntuacionPista(){
+
+        for ( int cont = 0; cont < jugadores.length; cont++ ){
+
+            System.out.println("El/La jugador/a "+this.jugadores[cont].getNombre()+" ha sacado una puntuación de :"+this.jugadores[cont].getPuntuacion());
+
+        }
+
+    }
+
 
 ///////// MAXIMA PUNTUACION PISTA /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -162,6 +174,30 @@ public class Pista {
 
  */
 
+    public void maxPuntuacionPista(){
+
+        int puntuacionActual = 0;
+        int puntuacionAnterior = 0;
+        int puntuacionMaxima = 0;
+
+        //Recorrer el array para ver las puntuaciones de cada jugador
+        for ( int cont = 0; cont < jugadores.length; cont++ ){
+
+            puntuacionActual = this.jugadores[cont].getPuntuacion();
+
+            if ( puntuacionActual > puntuacionAnterior ){
+
+                puntuacionMaxima = puntuacionActual;
+
+            }else {
+                puntuacionAnterior = puntuacionActual;
+            }
+
+
+
+        }
+
+    }
 
 ///////// GENERAR PUNTUACION JUGADORES ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -185,6 +221,24 @@ public class Pista {
         Los jugadores deben tener una puntuación ( del 0 al 300 )
 
  */
+
+    public void generarPuntuacionJugadores(){
+
+        Random rnd = new Random();
+
+        int valor;
+
+        //Ir añadiendo las puntuaciones a los jugadores
+        for ( int cont = 0; cont < jugadores.length; cont++ ){
+
+            //Generar la puntuación, de 0 a 300
+            valor = rnd.nextInt(301);
+
+            this.jugadores[cont].setPuntuacion(valor);
+
+        }
+
+    }
 
 
 ///////// CREAR JUGADORES ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -212,6 +266,13 @@ public class Pista {
         Jugadores con nombres, IDs únicos y puntuaciones(en este caso 0)
 
  */
+
+    public void crearJugadores(){
+
+
+
+
+    }
 
 
 ///////// METODOS OVERRIDE ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
