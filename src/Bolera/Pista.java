@@ -179,6 +179,7 @@ public class Pista {
         int puntuacionActual = 0;
         int puntuacionAnterior = 0;
         int puntuacionMaxima = 0;
+        int jugador = 0; //para guardar la posición en la que se encuentra el jugador con la máxima puntuación
 
         //Recorrer el array para ver las puntuaciones de cada jugador
         for ( int cont = 0; cont < jugadores.length; cont++ ){
@@ -188,14 +189,16 @@ public class Pista {
             if ( puntuacionActual > puntuacionAnterior ){
 
                 puntuacionMaxima = puntuacionActual;
+                jugador = cont;
 
-            }else {
-                puntuacionAnterior = puntuacionActual;
             }
 
-
+            puntuacionAnterior = puntuacionActual;
 
         }
+
+        System.out.println("El jugador ganador es "+this.jugadores[jugador].getNombre());
+        System.out.println("Con una puntuación de :"+this.jugadores[jugador].getPuntuacion()+" puntos");
 
     }
 
