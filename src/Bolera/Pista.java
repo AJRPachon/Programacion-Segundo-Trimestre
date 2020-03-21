@@ -231,12 +231,13 @@ public class Pista {
 
         int valor;
 
-        //Ir añadiendo las puntuaciones a los jugadores
+        //Añadir las puntuaciones a los jugadores
         for ( int cont = 0; cont < jugadores.length; cont++ ){
 
             //Generar la puntuación, de 0 a 300
             valor = rnd.nextInt(301);
 
+            //Asignamos el valor del random al jugador correspondiente
             this.jugadores[cont].setPuntuacion(valor);
 
         }
@@ -272,8 +273,19 @@ public class Pista {
 
     public void crearJugadores(){
 
+        NombreJugadores objNombreJuga = new NombreJugadores();
 
+        String nombres;
+        int puntuacion = 0;
 
+        for (int cont = 0; cont < jugadores.length; cont++) {
+
+            //Coge el nombre
+            nombres = objNombreJuga.nombres[cont];
+
+            //Creamos el jugador con el nombre y la puntuacion
+            this.jugadores[cont] = new Jugador(nombres, puntuacion);
+        }
 
     }
 

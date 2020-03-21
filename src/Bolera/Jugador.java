@@ -51,7 +51,6 @@ public class Jugador {
 
 
     //Constructor con parametros
-
     public Jugador(String nombre, int puntuacion){
 
         this.nombre = nombre;
