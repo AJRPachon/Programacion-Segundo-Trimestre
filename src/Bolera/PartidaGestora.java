@@ -37,6 +37,31 @@ public class PartidaGestora {
 
 ///////// JUGAR PARTIDA ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+    //Crear un método que recorra las pistas y dentro del mismo que también recorra
+    // cada array individual y vaya añadiendo los nombres en cada jugador
+
+    public void cargarJugadores(){
+
+        int jugadores = 4;
+        int contadorNombres = 0; //Coge los nombres del array de la clase NombreJugadores
+
+        Pista objPista = new Pista(jugadores);
+
+        //recorrer las pistas
+        for ( int cont = 0; cont < 12; cont++ ){
+
+            for ( int cont2 = 0; cont2 < objPista.getLongitudPista(); cont2++  ){
+
+                contadorNombres += cont2;
+
+                objPista.crearJugadores(contadorNombres);
+
+            }
+
+        }
+
+    }
+
 ///////// METODOS OVERRIDE ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

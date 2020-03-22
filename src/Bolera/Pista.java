@@ -95,6 +95,10 @@ public class Pista {
         return this.IDPista;
     }
 
+    public int getLongitudPista(){
+        return this.jugadores.length;
+    }
+
 
     //·······························//
 
@@ -271,7 +275,8 @@ public class Pista {
 
  */
 
-    public void crearJugadores(){
+    //Tengo que pasarle el contador que va a ir cogiendo los nombres de los jugadores
+    public void crearJugadores(int contadorNombres){
 
         NombreJugadores objNombreJuga = new NombreJugadores();
 
@@ -281,7 +286,7 @@ public class Pista {
         for (int cont = 0; cont < jugadores.length; cont++) {
 
             //Coge el nombre
-            nombres = objNombreJuga.nombres[cont];
+            nombres = objNombreJuga.nombres[contadorNombres];
 
             //Creamos el jugador con el nombre y la puntuacion
             this.jugadores[cont] = new Jugador(nombres, puntuacion);
