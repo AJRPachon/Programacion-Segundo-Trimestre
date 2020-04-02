@@ -48,7 +48,7 @@ public class PartidaGestora {
         Pista objPista = new Pista(jugadores);
 
         //recorrer las pistas
-        for ( int cont = 0; cont < 12; cont++ ){
+        for ( int cont = 0; cont < objPista.getLongitudPista(); cont++ ){
 
             for ( int cont2 = 0; cont2 < objPista.getLongitudPista(); cont2++  ){
 
