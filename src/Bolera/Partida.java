@@ -39,7 +39,7 @@ package Bolera;
         getLongitudJugadores()
 
 
-        //Patron delegacion
+        //Patron delegacion ( Clase Jugador )
             getJugadorNombre()
 
             getJugadorPuntuacion()
@@ -50,9 +50,9 @@ package Bolera;
 
     METODOS AÑADIDOS:
         crearJugadores() ·· ( Añade el nombre y la puntuación(0) a nuestro array numJugador )
-        mostrarPuntuacionPista() ·· ( Puntuación de cada jugador de cada pista )
-        maxPuntuacionPista()  ·· ( Muestra la máxima puntuación + nombre ganador )
         generarPuntuacionJugadores()  ··  ( Genera una puntuación para cada uno de los jugadores ( del 0 al 300 ) )
+        maxPuntuacionPista()  ·· ( Muestra la máxima puntuación + nombre ganador )
+        mostrarPuntuacionPista() ·· ( Puntuación de cada jugador de cada pista )
 
 
 */
@@ -108,7 +108,7 @@ public class Partida {
     }
 
 
-    //·······························//
+    //········· Patrón delegación ············//
 
     //Metodos clase Jugador
     public String getJugadorNombre() {
@@ -129,14 +129,72 @@ public class Partida {
 
 
 
-///////// MOSTRAR PUNTUACION FINAL ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+///////// METODOS AÑADIDOS ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+///////// CREAR JUGADORES ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    
+/*
+
+    SIGNATURA:
+        public void crearJugadores()
+
+    COMENTARIO:
+        Añade el nombre y la puntuación(0) a nuestro array numJugador
+
+    ENTRADAS:
+        nombre ( proviene del Enum )
+
+    SALIDAS:
+
+    ENTRADA/SALIDA:
+
+    PRECONDICIONES:
+        Debe de haberse inicializado el array jugadores
+
+    POSTCONDICIONES:
+        Jugadores con nombres, IDs únicos y puntuaciones(en este caso 0)
+
+ */
+
+    //Tengo que pasarle el contador que va a ir cogiendo los nombres de los jugadores
+    public void crearJugadores(){
+
+        NombreJugadores objNombreJuga = new NombreJugadores();
+
+        String nombres;
+        int puntuacion = 0;
+        int contadorNombres = 0;
+
+        //Recorre las partidas
+        for (int cont = 0; cont < partida.length; cont++) {
+
+            //Recorre los jugadores
+            for ( int cont2 = 0; cont2 < partida[0].length; cont2++) {
+
+                contadorNombres += cont2;
+
+                //Coge el nombre
+                nombres = objNombreJuga.nombres[contadorNombres];
+
+                //Creamos el jugador con el nombre y la puntuacion
+                this.partida[cont][cont2] = new Jugador(nombres, puntuacion);
+
+            }
+
+            contadorNombres+= 1; //Para sumarle 1 en la siguiente iteración de los nombres
+
+        }
+
+    }
+
+
+///////// GENERAR PUNTUACION JUGADORES ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 /*
     SIGNATURA:
-         public void mostrarPuntuacionPista()
+        public void generarPuntuacionJugadores()
 
     COMENTARIO:
-        Puntuación de cada jugador de cada pista impresa por pantalla
+        Genera una puntuación para cada uno de los jugadores ( del 0 al 300 )
 
     ENTRADAS:
 
@@ -145,27 +203,34 @@ public class Partida {
     ENTRADA/SALIDA:
 
     PRECONDICIONES:
-        Se ha debido de jugar al menos 1 partida
+        Deben de haberse creado los jugadores
 
     POSTCONDICIONES:
-        Mostrara las puntuaciones de los jugadores impresa por pantalla
+        Los jugadores deben tener una puntuación ( del 0 al 300 )
 
  */
 
-    public void mostrarPuntuacionPista(){
+    public void generarPuntuacionJugadores(){
 
-        //Recorre las pistas
+        Random rnd = new Random();
+
+        int valor;
+
+        //Añadir las puntuaciones a los jugadores
+        //Recorre las partidas
         for ( int cont = 0; cont < partida.length; cont++ ){
-
-            System.out.println("Pista "+cont+":");
 
             //Recorre los jugadores
             for ( int cont2 = 0; cont2 < partida[0].length; cont2++ ) {
 
-                System.out.println("El/La jugador/a " + this.partida[cont][cont2].getNombre() + " ha sacado una puntuación de :" + this.partida[cont][cont2].getPuntuacion());
+                //Generar la puntuación, de 0 a 300
+                valor = rnd.nextInt(301);
+
+                //Asignamos el valor del random al jugador correspondiente
+                this.partida[cont][cont2].setPuntuacion(valor);
+
             }
 
-            System.out.println();
         }
 
     }
@@ -229,66 +294,14 @@ public class Partida {
     }
 
 
-///////// CREAR JUGADORES ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-
-/*
-
-    SIGNATURA:
-        public void crearJugadores()
-
-    COMENTARIO:
-        Añade el nombre y la puntuación(0) a nuestro array numJugador
-
-    ENTRADAS:
-        nombre ( proviene del Enum )
-
-    SALIDAS:
-
-    ENTRADA/SALIDA:
-
-    PRECONDICIONES:
-        Debe de haberse inicializado el array jugadores
-
-    POSTCONDICIONES:
-        Jugadores con nombres, IDs únicos y puntuaciones(en este caso 0)
-
- */
-
-    //Tengo que pasarle el contador que va a ir cogiendo los nombres de los jugadores
-    public void crearJugadores(int contadorNombres){
-
-        NombreJugadores objNombreJuga = new NombreJugadores();
-
-        String nombres;
-        int puntuacion = 0;
-
-        //Recorre las partidas
-        for (int cont = 0; cont < partida.length; cont++) {
-
-            //Recorre los jugadores
-            for ( int cont2 = 0; cont2 < partida[0].length; cont2++) {
-
-                //Coge el nombre
-                nombres = objNombreJuga.nombres[contadorNombres];
-
-                //Creamos el jugador con el nombre y la puntuacion
-                this.partida[cont][cont2] = new Jugador(nombres, puntuacion);
-
-            }
-        }
-
-    }
-
-
-///////// GENERAR PUNTUACION JUGADORES ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+///////// MOSTRAR PUNTUACION FINAL ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 /*
     SIGNATURA:
-        public void generarPuntuacionJugadores()
+         public void mostrarPuntuacionPista()
 
     COMENTARIO:
-        Genera una puntuación para cada uno de los jugadores ( del 0 al 300 )
+        Puntuación de cada jugador de cada pista impresa por pantalla
 
     ENTRADAS:
 
@@ -297,38 +310,31 @@ public class Partida {
     ENTRADA/SALIDA:
 
     PRECONDICIONES:
-        Deben de haberse creado los jugadores
+        Se ha debido de jugar al menos 1 partida
 
     POSTCONDICIONES:
-        Los jugadores deben tener una puntuación ( del 0 al 300 )
+        Mostrara las puntuaciones de los jugadores impresa por pantalla
 
  */
 
-    public void generarPuntuacionJugadores(){
+    public void mostrarPuntuacionPista(){
 
-        Random rnd = new Random();
-
-        int valor;
-
-        //Añadir las puntuaciones a los jugadores
-        //Recorre las partidas
+        //Recorre las pistas
         for ( int cont = 0; cont < partida.length; cont++ ){
+
+            System.out.println("Pista "+cont+":");
 
             //Recorre los jugadores
             for ( int cont2 = 0; cont2 < partida[0].length; cont2++ ) {
 
-                //Generar la puntuación, de 0 a 300
-                valor = rnd.nextInt(301);
-
-                //Asignamos el valor del random al jugador correspondiente
-                this.partida[cont][cont2].setPuntuacion(valor);
-
+                System.out.println("El/La jugador/a " + this.partida[cont][cont2].getNombre() + " ha sacado una puntuación de :" + this.partida[cont][cont2].getPuntuacion());
             }
 
+            System.out.println();
         }
 
     }
-    
+
 
 ///////// METODOS OVERRIDE ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
