@@ -196,69 +196,33 @@ public class Partida {
 
     public void maxPuntuacionPista(){
 
-        int puntuacionActual = 0;
+        int puntuacionActual;
         int puntuacionAnterior = 0;
-        int puntuacionMaxima = 0;
         int jugador = 0; //para guardar la posición en la que se encuentra el jugador con la máxima puntuación
 
         //Recorrer el array para ver las puntuaciones de cada jugador
-        for ( int cont = 0; cont < jugadores.length; cont++ ){
 
-            puntuacionActual = this.jugadores[cont].getPuntuacion();
+        //Recorre las pistas
+        for ( int cont = 0; cont < partida.length; cont++ ){
 
-            if ( puntuacionActual > puntuacionAnterior ){
+            //Recorre los jugadores
+            for ( int cont2 = 0; cont2 < partida[0].length; cont2++) {
 
-                puntuacionMaxima = puntuacionActual;
-                jugador = cont;
+                puntuacionActual = this.partida[cont][cont2].getPuntuacion();
 
+                if (puntuacionActual > puntuacionAnterior) {
+
+                    jugador = cont2;
+
+                }
+
+                puntuacionAnterior = puntuacionActual;
             }
 
-            puntuacionAnterior = puntuacionActual;
-
-        }
-
-        System.out.println("El jugador ganador es "+this.jugadores[jugador].getNombre());
-        System.out.println("Con una puntuación de :"+this.jugadores[jugador].getPuntuacion()+" puntos");
-
-    }
-
-///////// GENERAR PUNTUACION JUGADORES ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-/*
-    SIGNATURA:
-        public void generarPuntuacionJugadores()
-
-    COMENTARIO:
-        Genera una puntuación para cada uno de los jugadores ( del 0 al 300 )
-
-    ENTRADAS:
-
-    SALIDAS:
-
-    ENTRADA/SALIDA:
-
-    PRECONDICIONES:
-        Deben de haberse creado los jugadores
-
-    POSTCONDICIONES:
-        Los jugadores deben tener una puntuación ( del 0 al 300 )
-
- */
-
-    public void generarPuntuacionJugadores(){
-
-        Random rnd = new Random();
-
-        int valor;
-
-        //Añadir las puntuaciones a los jugadores
-        for ( int cont = 0; cont < jugadores.length; cont++ ){
-
-            //Generar la puntuación, de 0 a 300
-            valor = rnd.nextInt(301);
-
-            //Asignamos el valor del random al jugador correspondiente
-            this.jugadores[cont].setPuntuacion(valor);
+            System.out.println("Pista "+cont+":");
+            System.out.println("El jugador ganador es "+this.partida[cont][jugador].getNombre());
+            System.out.println("Con una puntuación de :"+this.partida[cont][jugador].getPuntuacion()+" puntos");
+            System.out.println();
 
         }
 
@@ -299,17 +263,72 @@ public class Partida {
         String nombres;
         int puntuacion = 0;
 
-        for (int cont = 0; cont < jugadores.length; cont++) {
+        //Recorre las partidas
+        for (int cont = 0; cont < partida.length; cont++) {
 
-            //Coge el nombre
-            nombres = objNombreJuga.nombres[contadorNombres];
+            //Recorre los jugadores
+            for ( int cont2 = 0; cont2 < partida[0].length; cont2++) {
 
-            //Creamos el jugador con el nombre y la puntuacion
-            this.jugadores[cont] = new Jugador(nombres, puntuacion);
+                //Coge el nombre
+                nombres = objNombreJuga.nombres[contadorNombres];
+
+                //Creamos el jugador con el nombre y la puntuacion
+                this.partida[cont][cont2] = new Jugador(nombres, puntuacion);
+
+            }
         }
 
     }
 
+
+///////// GENERAR PUNTUACION JUGADORES ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+/*
+    SIGNATURA:
+        public void generarPuntuacionJugadores()
+
+    COMENTARIO:
+        Genera una puntuación para cada uno de los jugadores ( del 0 al 300 )
+
+    ENTRADAS:
+
+    SALIDAS:
+
+    ENTRADA/SALIDA:
+
+    PRECONDICIONES:
+        Deben de haberse creado los jugadores
+
+    POSTCONDICIONES:
+        Los jugadores deben tener una puntuación ( del 0 al 300 )
+
+ */
+
+    public void generarPuntuacionJugadores(){
+
+        Random rnd = new Random();
+
+        int valor;
+
+        //Añadir las puntuaciones a los jugadores
+        //Recorre las partidas
+        for ( int cont = 0; cont < partida.length; cont++ ){
+
+            //Recorre los jugadores
+            for ( int cont2 = 0; cont2 < partida[0].length; cont2++ ) {
+
+                //Generar la puntuación, de 0 a 300
+                valor = rnd.nextInt(301);
+
+                //Asignamos el valor del random al jugador correspondiente
+                this.partida[cont][cont2].setPuntuacion(valor);
+
+            }
+
+        }
+
+    }
+    
 
 ///////// METODOS OVERRIDE ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
