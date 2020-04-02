@@ -20,7 +20,7 @@ package Bolera;
         Gestionará quién es el ganador, puntuación máxima
 
     PROPIEDADES BASICAS:
-        Jugador [cantJuga] numJugador consultable ( cantJuga en este caso es 4 )
+        Jugador [cantPista][cantJuga] partida consultable ( cantJuga en este caso es 4 ) ( cantPista en este caso 12)
         int IDPista consultable
         int incrementoIDP consultable ( propiedad compartida (static) )
 
@@ -32,8 +32,11 @@ package Bolera;
 
     INTERFAZ
     METODOS BASICOS:
-        getJugadores()
+        getPartida()
         getIDPista()
+
+        getLongitudPista()
+        getLongitudJugadores()
 
 
         //Patron delegacion
@@ -47,7 +50,7 @@ package Bolera;
 
     METODOS AÑADIDOS:
         crearJugadores() ·· ( Añade el nombre y la puntuación(0) a nuestro array numJugador )
-        mostrarPuntuacionPista() ·· ( Puntuación de cada jugador )
+        mostrarPuntuacionPista() ·· ( Puntuación de cada jugador de cada pista )
         maxPuntuacionPista()  ·· ( Muestra la máxima puntuación + nombre ganador )
         generarPuntuacionJugadores()  ··  ( Genera una puntuación para cada uno de los jugadores ( del 0 al 300 ) )
 
@@ -56,9 +59,9 @@ package Bolera;
 
 import java.util.Random;
 
-public class Pista {
+public class Partida {
 
-    private Jugador[] jugadores;
+    private Jugador[][] partida;
     private int IDPista;
     private static int incrementoIDP = 0;
 
@@ -66,20 +69,21 @@ public class Pista {
     private Jugador puntuacion;
     private Jugador IDJugador;
 
+
 ////////// CONSTRUCTORES //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     //Constructor sin parametros
-    public Pista(){
+    public Partida(){
 
-        this.jugadores = new Jugador[1];
+        this.partida = new Jugador[1][1];
         this.IDPista = ++incrementoIDP;
 
     }
 
     //Constructor con parametros
-    public Pista(int cantJuga){
+    public Partida(int cantPista, int cantJuga){
 
-        this.jugadores = new Jugador[cantJuga];
+        this.partida = new Jugador[cantPista][cantJuga];
         this.IDPista = ++incrementoIDP;
 
     }
@@ -87,8 +91,8 @@ public class Pista {
 ///////// GETTERS Y SETTERS ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     //Metodos Basicos
-    public Jugador[] getJugadores() {
-        return this.jugadores;
+    public Jugador[][] getPartida() {
+        return this.partida;
     }
 
     public int getIDPista() {
@@ -96,7 +100,11 @@ public class Pista {
     }
 
     public int getLongitudPista(){
-        return this.jugadores.length;
+        return this.partida.length; //Devuelve la longitud de las filas
+    }
+
+    public int getLongitudJugadores(){
+        return this.partida[0].length; //Devuelve la longiud de las columnas
     }
 
 
@@ -128,7 +136,7 @@ public class Pista {
          public void mostrarPuntuacionPista()
 
     COMENTARIO:
-        Puntuación de cada jugador impresa por pantalla
+        Puntuación de cada jugador de cada pista impresa por pantalla
 
     ENTRADAS:
 
@@ -146,10 +154,18 @@ public class Pista {
 
     public void mostrarPuntuacionPista(){
 
-        for ( int cont = 0; cont < jugadores.length; cont++ ){
+        //Recorre las pistas
+        for ( int cont = 0; cont < partida.length; cont++ ){
 
-            System.out.println("El/La jugador/a "+this.jugadores[cont].getNombre()+" ha sacado una puntuación de :"+this.jugadores[cont].getPuntuacion());
+            System.out.println("Pista "+cont+":");
 
+            //Recorre los jugadores
+            for ( int cont2 = 0; cont2 < partida[0].length; cont2++ ) {
+
+                System.out.println("El/La jugador/a " + this.partida[cont][cont2].getNombre() + " ha sacado una puntuación de :" + this.partida[cont][cont2].getPuntuacion());
+            }
+
+            System.out.println();
         }
 
     }

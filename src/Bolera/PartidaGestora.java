@@ -29,20 +29,20 @@ package Bolera;
 
 public class PartidaGestora {
 
-    private Pista[] partida;
+    private Partida[] partida;
 
 
 ////////// CONSTRUCTORES //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     public PartidaGestora(){ //Constructor sin parametros
 
-        this.partida = new Pista[12];
+        this.partida = new Partida[12];
 
     }
 
     public PartidaGestora(int nPartidas){
 
-        this.partida = new Pista[nPartidas];
+        this.partida = new Partida[nPartidas];
 
     }
 
@@ -60,7 +60,7 @@ public class PartidaGestora {
         int contadorNombres = 0; //Coge los nombres del array de la clase NombreJugadores
 
 
-        Pista objPista = new Pista(jugadores);
+        Partida objPartida = new Partida(jugadores);
 
         //recorrer las pistas ( 12 pistas )
         for ( int cont = 0; cont < pistas; cont++ ){
@@ -70,7 +70,7 @@ public class PartidaGestora {
 
                 contadorNombres += cont2;
 
-                objPista.crearJugadores(contadorNombres);
+                objPartida.crearJugadores(contadorNombres);
 
             }
 
