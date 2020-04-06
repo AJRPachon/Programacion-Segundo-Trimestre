@@ -131,7 +131,7 @@ public class Partida {
 
 ///////// METODOS AÑADIDOS ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 ///////// CREAR JUGADORES ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    
+
 /*
 
     SIGNATURA:
@@ -285,8 +285,8 @@ public class Partida {
             }
 
             System.out.println("Pista "+cont+":");
-            System.out.println("El jugador ganador es "+this.partida[cont][jugador].getNombre());
-            System.out.println("Con una puntuación de :"+this.partida[cont][jugador].getPuntuacion()+" puntos");
+            System.out.println("El jugador con la máxima puntuación es: "+this.partida[cont][jugador].getNombre());
+            System.out.println("Con una puntuación de: "+this.partida[cont][jugador].getPuntuacion()+" puntos");
             System.out.println();
 
         }
@@ -322,12 +322,12 @@ public class Partida {
         //Recorre las pistas
         for ( int cont = 0; cont < partida.length; cont++ ){
 
-            System.out.println("Pista "+cont+":");
+            System.out.println("Pista "+(cont+1)+":");
 
             //Recorre los jugadores
             for ( int cont2 = 0; cont2 < partida[0].length; cont2++ ) {
 
-                System.out.println("El/La jugador/a " + this.partida[cont][cont2].getNombre() + " ha sacado una puntuación de :" + this.partida[cont][cont2].getPuntuacion());
+                System.out.println("El/La jugador/a " + this.partida[cont][cont2].getNombre() + " ha sacado una puntuación de: " + this.partida[cont][cont2].getPuntuacion());
             }
 
             System.out.println();

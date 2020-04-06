@@ -19,7 +19,16 @@ public class Competicion {
 
     public static void main(String[] args){
 
+        int cantPista = 12;
+        int cantJuga = 4;
 
+        Partida objPartida = new Partida(cantPista, cantJuga);
+
+        objPartida.crearJugadores();
+
+        objPartida.generarPuntuacionJugadores();
+
+        objPartida.mostrarPuntuacionPista();
 
     }
 
