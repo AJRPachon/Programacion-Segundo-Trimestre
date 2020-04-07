@@ -24,11 +24,15 @@ public class Competicion {
 
         Partida objPartida = new Partida(cantPista, cantJuga);
 
+        objPartida.crearNombreJugadores();
+
         objPartida.crearJugadores();
 
         objPartida.generarPuntuacionJugadores();
 
         objPartida.mostrarPuntuacionPista();
+
+        objPartida.maxPuntuacionPista();
 
     }
 

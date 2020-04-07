@@ -64,6 +64,7 @@ public class Partida {
     private Jugador[][] partida;
     private int IDPista;
     private static int incrementoIDP = 0;
+    private String[] nombreJugadores;
 
     private Jugador nombre;
     private Jugador puntuacion;
@@ -130,6 +131,45 @@ public class Partida {
 
 
 ///////// METODOS AÑADIDOS ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+///////// CREAR NOMBRE JUGADORES ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+/*
+    SIGNATURA:
+         public void crearNombreJugadores()
+
+    COMENTARIO:
+        Crea un String con los nombre de los jugadores para el método crearJugadores()
+
+    ENTRADAS:
+        Ninguna
+
+    SALIDAS:
+        Array cargado con los nombres
+
+    ENTRADA/SALIDA:
+        Ninguna
+
+    PRECONDICIONES:
+        Ninguna
+
+    POSTCONDICIONES:
+        Array con los nombres
+
+ */
+
+    public void crearNombreJugadores(){
+
+        nombreJugadores = new String [48];
+
+        for ( int cont  = 0; cont < 48; cont++ ) {
+
+            nombreJugadores[cont] = "Jugador"+(cont+1);
+
+        }
+    }
+
+
+
 ///////// CREAR JUGADORES ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 /*
@@ -170,17 +210,15 @@ public class Partida {
             //Recorre los jugadores
             for ( int cont2 = 0; cont2 < partida[0].length; cont2++) {
 
-                contadorNombres += cont2;
-
                 //Coge el nombre
-                nombres = objNombreJuga.nombres[contadorNombres];
+                nombres = nombreJugadores[contadorNombres];
 
                 //Creamos el jugador con el nombre y la puntuacion
                 this.partida[cont][cont2] = new Jugador(nombres, puntuacion);
 
-            }
+                contadorNombres++;
 
-            contadorNombres+= 1; //Para sumarle 1 en la siguiente iteración de los nombres
+            }
 
         }
 
@@ -284,7 +322,7 @@ public class Partida {
                 puntuacionAnterior = puntuacionActual;
             }
 
-            System.out.println("Pista "+cont+":");
+            System.out.println("Pista "+(cont+1)+":");
             System.out.println("El jugador con la máxima puntuación es: "+this.partida[cont][jugador].getNombre());
             System.out.println("Con una puntuación de: "+this.partida[cont][jugador].getPuntuacion()+" puntos");
             System.out.println();
