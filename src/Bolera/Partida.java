@@ -135,13 +135,13 @@ public class Partida {
 
 /*
     SIGNATURA:
-         public void crearNombreJugadores()
+         public void crearNombreJugadores(int cantNombres)
 
     COMENTARIO:
-        Crea un String con los nombre de los jugadores para el método crearJugadores()
+        Crea un array de tipo String con los nombre de los jugadores para el método crearJugadores()
 
     ENTRADAS:
-        Ninguna
+        Cantidad de nombres que tenemos que crear
 
     SALIDAS:
         Array cargado con los nombres
@@ -157,17 +157,16 @@ public class Partida {
 
  */
 
-    public void crearNombreJugadores(){
+    public void crearNombreJugadores(int cantNombres){
 
-        nombreJugadores = new String [48];
+        nombreJugadores = new String [cantNombres];
 
-        for ( int cont  = 0; cont < 48; cont++ ) {
+        for ( int cont  = 0; cont < cantNombres; cont++ ) {
 
             nombreJugadores[cont] = "Jugador"+(cont+1);
 
         }
     }
-
 
 
 ///////// CREAR JUGADORES ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -197,8 +196,6 @@ public class Partida {
 
     //Tengo que pasarle el contador que va a ir cogiendo los nombres de los jugadores
     public void crearJugadores(){
-
-        NombreJugadores objNombreJuga = new NombreJugadores();
 
         String nombres;
         int puntuacion = 0;
