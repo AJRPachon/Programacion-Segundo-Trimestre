@@ -271,65 +271,7 @@ public class Partida {
     }
 
 
-///////// MAXIMA PUNTUACION PISTA /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-/*
-    SIGNATURA:
-        public void maxPuntuacionPista()
-
-    COMENTARIO:
-        Muestra la máxima puntuación por pista + nombre ganador ( calcular ganador )
-
-    ENTRADAS:
-
-    SALIDAS:
-
-    ENTRADA/SALIDA:
-
-    PRECONDICIONES:
-        Se han debido de jugar todas las partidas
-
-    POSTCONDICIONES:
-        Debe mostrar el nombre del ganador (puntuación más alta ( calcularGanador ) )
-
- */
-
-    public void maxPuntuacionPista(){
-
-        int puntuacionActual;
-        int puntuacionAnterior = 0;
-        int jugador = 0; //para guardar la posición en la que se encuentra el jugador con la máxima puntuación
-
-        //Recorrer el array para ver las puntuaciones de cada jugador
-
-        //Recorre las pistas
-        for ( int cont = 0; cont < partida.length; cont++ ){
-
-            //Recorre los jugadores
-            for ( int cont2 = 0; cont2 < partida[0].length; cont2++) {
-
-                puntuacionActual = this.partida[cont][cont2].getPuntuacion();
-
-                if (puntuacionActual > puntuacionAnterior) {
-
-                    jugador = cont2;
-
-                }
-
-                puntuacionAnterior = puntuacionActual;
-            }
-
-            System.out.println("Pista "+(cont+1)+":");
-            System.out.println("El jugador con la máxima puntuación es: "+this.partida[cont][jugador].getNombre());
-            System.out.println("Con una puntuación de: "+this.partida[cont][jugador].getPuntuacion()+" puntos");
-            System.out.println();
-
-        }
-
-    }
-
-
-///////// MOSTRAR PUNTUACION FINAL ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+///////// MOSTRAR PUNTUACION PISTA ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 /*
     SIGNATURA:
@@ -369,6 +311,86 @@ public class Partida {
         }
 
     }
+
+
+///////// MAXIMA PUNTUACION PISTA /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+/*
+    SIGNATURA:
+        public void maxPuntuacionPista()
+
+    COMENTARIO:
+        Muestra la máxima puntuación por pista + nombre ganador ( calcular ganador )
+
+    ENTRADAS:
+
+    SALIDAS:
+
+    ENTRADA/SALIDA:
+
+    PRECONDICIONES:
+        Se han debido de jugar todas las partidas
+
+    POSTCONDICIONES:
+        Debe mostrar el nombre del ganador (puntuación más alta ( calcularGanador ) )
+
+ */
+
+    public void maxPuntuacionPista(){
+
+        int puntuacionActual;
+        int puntuacionAnterior = 0;
+        int jugador = 0; //para guardar la posición en la que se encuentra el jugador con la máxima puntuación
+        boolean empate=true;
+        int jugadorEmpate = 0;
+
+        //Recorrer el array para ver las puntuaciones de cada jugador
+
+        //Recorre las pistas
+        for ( int cont = 0; cont < partida.length; cont++ ){
+
+            //Recorre los jugadores
+            for ( int cont2 = 0; cont2 < partida[0].length; cont2++) {
+
+                puntuacionActual = this.partida[cont][cont2].getPuntuacion();
+
+                //Asignamos a jugador la posición de jugador ganador
+                if (puntuacionActual > puntuacionAnterior) {
+
+                    empate = false;
+                    jugador = cont2;
+                }
+
+                //Para saber si hay empate o no
+                if ( puntuacionActual == puntuacionAnterior ){
+
+                    empate = true;
+                    jugador = cont2;
+                    jugadorEmpate = (cont2-1); //Asignamos el jugador anterior a jugadorEmpate
+                }
+
+                puntuacionAnterior = puntuacionActual;
+            }
+
+            if (!empate) {
+                System.out.println("Pista " + (cont + 1) + ":");
+                System.out.println("El jugador con la máxima puntuación es: " + this.partida[cont][jugador].getNombre());
+                System.out.println("Con una puntuación de: " + this.partida[cont][jugador].getPuntuacion() + " puntos");
+                System.out.println();
+
+                //Empate de 2 jugadores (Según nuestras reglas, los 2 últimos serán los que empaten)
+            }else{
+                System.out.println("Ha habido un empate en la pista " + (cont + 1) + ":");
+                System.out.println("El jugador "+this.partida[cont][jugador].getNombre()+" ha empatado con el jugador "+this.partida[cont][jugadorEmpate].getNombre());
+                System.out.println("Con una puntuación de: " + this.partida[cont][jugador].getPuntuacion() + " puntos");
+                System.out.println();
+
+            }
+        }
+
+    }
+
+
 
 
 ///////// METODOS OVERRIDE ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
