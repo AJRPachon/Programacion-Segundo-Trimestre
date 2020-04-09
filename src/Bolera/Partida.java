@@ -23,6 +23,7 @@ package Bolera;
         Jugador [cantPista][cantJuga] partida consultable ( cantJuga en este caso es 4 ) ( cantPista en este caso 12)
         int IDPista consultable
         int incrementoIDP consultable ( propiedad compartida (static) )
+        String[] nombreJugadores consultable
 
 
     PROPIEDADES DERIVADAS:
@@ -37,6 +38,8 @@ package Bolera;
 
         getLongitudPista()
         getLongitudJugadores()
+
+        getNombreJugadores()
 
 
         //Patron delegacion ( Clase Jugador )
@@ -108,16 +111,21 @@ public class Partida {
         return this.partida[0].length; //Devuelve la longiud de las columnas
     }
 
+    public String getNombreJugadores(int posicion){
+
+        return this.nombreJugadores[posicion-1];
+    }
+
 
     //········· Patrón delegación ············//
 
     //Metodos clase Jugador
-    public String getJugadorNombre() {
-        return this.nombre.getNombre();
+    public String getJugadorNombre(int posPista, int posJuga) {
+        return this.partida[posPista-1][posJuga-1].getNombre();
     }
 
-    public int getJugadorPuntuacion() {
-        return this.puntuacion.getPuntuacion();
+    public int getJugadorPuntuacion(int posPista, int posJuga) {
+        return this.partida[posPista-1][posJuga-1].getPuntuacion();
     }
 
     public void setJugadorPuntuacion(int valor) {
