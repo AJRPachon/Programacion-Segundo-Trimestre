@@ -112,10 +112,16 @@ public class PartidaTest {
 
         int cantPista = 12;
         int cantJuga = 4;
+        int cantNombres = cantPista * cantJuga;
+        Jugador[][] partida;
+        Jugador[][] partida2;
 
         Partida objPartida = new Partida (cantPista, cantJuga);
+        Partida objPartida2 = new Partida(cantPista, cantJuga);
 
-        objPartida.getPartida();
+        partida = objPartida.getPartida();
+        partida2 = objPartida2.getPartida();
+        assertArrayEquals(partida2,partida);
 
     }
 
