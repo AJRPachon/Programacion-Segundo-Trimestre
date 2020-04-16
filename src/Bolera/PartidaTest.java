@@ -110,23 +110,26 @@ public class PartidaTest {
     @Test
     public void getPartida() {
 
-        int cantPista = 12;
-        int cantJuga = 4;
-        int cantNombres = cantPista * cantJuga;
         Jugador[][] partida;
         Jugador[][] partida2;
 
-        Partida objPartida = new Partida (cantPista, cantJuga);
-        Partida objPartida2 = new Partida(cantPista, cantJuga);
+        int cantNombres = 12*8;
+        Jugador jugador;
 
-        partida = objPartida.getPartida();
-        partida2 = objPartida2.getPartida();
-        assertArrayEquals(partida2,partida);
+        //Creamos el primer objeto que queremos comparar
+        Partida objPartida = new Partida(12, 8);
+        objPartida.crearNombreJugadores(cantNombres);
+        objPartida.crearJugadores();
+        objPartida.generarPuntuacionJugadores();
+        jugador = objPartida.getJugador(12,4);
 
-    }
 
-    @Test
-    public void getIDPista() {
+        //Creamos el segundo objeto y le pasamos los mismos valores
+        partida2 = new Jugador[12][8];
+
+
+        assertArrayEquals(partida2, partida);
+
     }
 
     @Test

@@ -21,8 +21,6 @@ package Bolera;
 
     PROPIEDADES BASICAS:
         Jugador [cantPista][cantJuga] partida consultable ( cantJuga en este caso es 4 ) ( cantPista en este caso 12)
-        int IDPista consultable
-        int incrementoIDP consultable ( propiedad compartida (static) )
         String[] nombreJugadores consultable
 
 
@@ -34,7 +32,6 @@ package Bolera;
     INTERFAZ
     METODOS BASICOS:
         getPartida()
-        getIDPista()
 
         getLongitudPista()
         getLongitudJugadores()
@@ -52,6 +49,7 @@ package Bolera;
 
 
     METODOS AÑADIDOS:
+        crearNombreJugadores() 
         crearJugadores() ·· ( Añade el nombre y la puntuación(0) a nuestro array numJugador )
         generarPuntuacionJugadores()  ··  ( Genera una puntuación para cada uno de los jugadores ( del 0 al 300 ) )
         maxPuntuacionPista()  ·· ( Muestra la máxima puntuación + nombre ganador )
@@ -64,51 +62,43 @@ import java.util.Random;
 
 public class Partida {
 
-    private Jugador[][] partida;
-    private int IDPista;
-    private static int incrementoIDP = 0;
+    private Jugador[][] jugadores;
     private String[] nombreJugadores;
-
-    private Jugador nombre;
-    private Jugador puntuacion;
-    private Jugador IDJugador;
-
 
 ////////// CONSTRUCTORES //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     //Constructor sin parametros
     public Partida(){
 
-        this.partida = new Jugador[1][1];
-        this.IDPista = ++incrementoIDP;
+        this.jugadores = new Jugador[1][1];
 
     }
 
     //Constructor con parametros
     public Partida(int cantPista, int cantJuga){
 
-        this.partida = new Jugador[cantPista][cantJuga];
-        this.IDPista = ++incrementoIDP;
+        this.jugadores = new Jugador[cantPista][cantJuga];
 
     }
 
 ///////// GETTERS Y SETTERS ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     //Metodos Basicos
-    public Jugador[][] getPartida() {
-        return this.partida;
+    public Jugador[][] getJugadores() {
+        return this.jugadores;
     }
 
-    public int getIDPista() {
-        return this.IDPista;
+    public Jugador getJugador(int p1,int p2){
+        return this.jugadores[p1][p2];
     }
+
 
     public int getLongitudPista(){
-        return this.partida.length; //Devuelve la longitud de las filas
+        return this.jugadores.length; //Devuelve la longitud de las filas
     }
 
     public int getLongitudJugadores(){
-        return this.partida[0].length; //Devuelve la longiud de las columnas
+        return this.jugadores[0].length; //Devuelve la longiud de las columnas
     }
 
     public String getNombreJugadores(int posicion){
@@ -121,19 +111,19 @@ public class Partida {
 
     //Metodos clase Jugador
     public String getJugadorNombre(int posPista, int posJuga) {
-        return this.partida[posPista-1][posJuga-1].getNombre();
+        return this.jugadores[posPista-1][posJuga-1].getNombre();
     }
 
     public int getJugadorPuntuacion(int posPista, int posJuga) {
-        return this.partida[posPista-1][posJuga-1].getPuntuacion();
+        return this.jugadores[posPista-1][posJuga-1].getPuntuacion();
     }
 
-    public void setJugadorPuntuacion(int valor) {
-        this.puntuacion.setPuntuacion(valor);
+    public void setJugadorPuntuacion(int valor, int posPista, int posJuga) {
+        this.jugadores[posPista-1][posJuga-1].setPuntuacion(valor);
     }
 
-    public int getJugadorIDJugador() {
-        return this.IDJugador.getIDJugador();
+    public int getJugadorIDJugador(int posPista, int posJuga) {
+        return this.jugadores[posPista-1][posJuga-1].getIDJugador();
     }
 
 
@@ -188,7 +178,7 @@ public class Partida {
         Añade el nombre y la puntuación(0) a nuestro array numJugador
 
     ENTRADAS:
-        nombre ( proviene del Enum )
+        nombre ( proviene del método crearNombreJugadores )
 
     SALIDAS:
 
@@ -210,16 +200,16 @@ public class Partida {
         int contadorNombres = 0;
 
         //Recorre las partidas
-        for (int cont = 0; cont < partida.length; cont++) {
+        for (int cont = 0; cont < jugadores.length; cont++) {
 
             //Recorre los jugadores
-            for ( int cont2 = 0; cont2 < partida[0].length; cont2++) {
+            for (int cont2 = 0; cont2 < jugadores[0].length; cont2++) {
 
                 //Coge el nombre
                 nombres = nombreJugadores[contadorNombres];
 
                 //Creamos el jugador con el nombre y la puntuacion
-                this.partida[cont][cont2] = new Jugador(nombres, puntuacion);
+                this.jugadores[cont][cont2] = new Jugador(nombres, puntuacion);
 
                 contadorNombres++;
 
@@ -261,16 +251,16 @@ public class Partida {
 
         //Añadir las puntuaciones a los jugadores
         //Recorre las partidas
-        for ( int cont = 0; cont < partida.length; cont++ ){
+        for (int cont = 0; cont < jugadores.length; cont++ ){
 
             //Recorre los jugadores
-            for ( int cont2 = 0; cont2 < partida[0].length; cont2++ ) {
+            for (int cont2 = 0; cont2 < jugadores[0].length; cont2++ ) {
 
                 //Generar la puntuación, de 0 a 300
                 valor = rnd.nextInt(301);
 
                 //Asignamos el valor del random al jugador correspondiente
-                this.partida[cont][cont2].setPuntuacion(valor);
+                this.jugadores[cont][cont2].setPuntuacion(valor);
 
             }
 
@@ -305,14 +295,14 @@ public class Partida {
     public void mostrarPuntuacionPista(){
 
         //Recorre las pistas
-        for ( int cont = 0; cont < partida.length; cont++ ){
+        for (int cont = 0; cont < jugadores.length; cont++ ){
 
             System.out.println("Pista "+(cont+1)+":");
 
             //Recorre los jugadores
-            for ( int cont2 = 0; cont2 < partida[0].length; cont2++ ) {
+            for (int cont2 = 0; cont2 < jugadores[0].length; cont2++ ) {
 
-                System.out.println("El/La jugador/a " + this.partida[cont][cont2].getNombre() + " ha sacado una puntuación de: " + this.partida[cont][cont2].getPuntuacion());
+                System.out.println("El/La jugador/a " + this.jugadores[cont][cont2].getNombre() + " ha sacado una puntuación de: " + this.jugadores[cont][cont2].getPuntuacion());
             }
 
             System.out.println();
@@ -355,12 +345,12 @@ public class Partida {
         //Recorrer el array para ver las puntuaciones de cada jugador
 
         //Recorre las pistas
-        for ( int cont = 0; cont < partida.length; cont++ ){
+        for (int cont = 0; cont < jugadores.length; cont++ ){
 
             //Recorre los jugadores
-            for ( int cont2 = 0; cont2 < partida[0].length; cont2++) {
+            for (int cont2 = 0; cont2 < jugadores[0].length; cont2++) {
 
-                puntuacionActual = this.partida[cont][cont2].getPuntuacion();
+                puntuacionActual = this.jugadores[cont][cont2].getPuntuacion();
 
                 //Asignamos a jugador la posición de jugador ganador
                 if (puntuacionActual > puntuacionAnterior) {
@@ -382,15 +372,15 @@ public class Partida {
 
             if (!empate) {
                 System.out.println("Pista " + (cont + 1) + ":");
-                System.out.println("El jugador con la máxima puntuación es: " + this.partida[cont][jugador].getNombre());
-                System.out.println("Con una puntuación de: " + this.partida[cont][jugador].getPuntuacion() + " puntos");
+                System.out.println("El jugador con la máxima puntuación es: " + this.jugadores[cont][jugador].getNombre());
+                System.out.println("Con una puntuación de: " + this.jugadores[cont][jugador].getPuntuacion() + " puntos");
                 System.out.println();
 
                 //Empate de 2 jugadores (Según nuestras reglas, los 2 últimos serán los que empaten)
             }else{
                 System.out.println("Ha habido un empate en la pista " + (cont + 1) + ":");
-                System.out.println("El jugador "+this.partida[cont][jugador].getNombre()+" ha empatado con el jugador "+this.partida[cont][jugadorEmpate].getNombre());
-                System.out.println("Con una puntuación de: " + this.partida[cont][jugador].getPuntuacion() + " puntos");
+                System.out.println("El jugador "+this.jugadores[cont][jugador].getNombre()+" ha empatado con el jugador "+this.jugadores[cont][jugadorEmpate].getNombre());
+                System.out.println("Con una puntuación de: " + this.jugadores[cont][jugador].getPuntuacion() + " puntos");
                 System.out.println();
 
             }
