@@ -128,8 +128,6 @@ public class PartidaTest {
         partida2 = new Jugador[12][8];
 
 
-        assertArrayEquals(partida2, partida);
-
     }
 
     @Test
